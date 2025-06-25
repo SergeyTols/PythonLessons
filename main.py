@@ -6,4 +6,10 @@ if hour < 0:
     hour = 0
 
 if hour <= 7 and hour < 12:
-    print()
+    print('утро')
+elif hour <= 12 and hour < 18:
+    print('день')
+elif hour <= 19 and hour < 23:
+    print('вечер')
+else:
+    print('ночь')

@@ -1,14 +1,14 @@
-a = 3
-b = 5
+# Iterable object
+# len() - сколько элементов в объекте
 
-temp = a
-a = b
-b = temp
+a = 123456
 
-print('До')
-print('a =', a, 'b=', b)
+length = len(str(a))
 
-a, b = b, a
+print(length)
 
-print('после')
-print(a, b)
+word = input('введите слово длинее 4 букв: ')
+if not word or len(word) < 4:
+    print('вы ничего не ввели или слово короче 4')
+else:
+    print('в вашем слове "' + word + '"', len(word), 'букв')

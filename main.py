@@ -1,15 +1,11 @@
-hour = 13
+a = 3
+b = 5
 
-if hour >23:
-    hour = 23
-if hour < 0:
-    hour = 0
+temp = a
+a = b
+b = temp
 
-if hour <= 7 and hour < 12:
-    print('утро')
-elif hour <= 12 and hour < 18:
-    print('день')
-elif hour <= 19 and hour < 23:
-    print('вечер')
-else:
-    print('ночь')
+print('До')
+print('a =', a, 'b=', b)
+
+a, b = b, a

@@ -59,3 +59,5 @@ elif choice == 'F' or choice == 'f':
     print('теперь сыт!')
 else:
     print('Выбор не ясен...')
+
+# на тест

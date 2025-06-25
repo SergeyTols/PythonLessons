@@ -1,14 +1,27 @@
-# Iterable object
-# len() - сколько элементов в объекте
+# Формат вывода
+# \ - вутри строки: начало управляющей последовательности
+word1 = 'пришел\n\t'
+word2 = 'увидел'
+word3 = 'победил'
+word4 = '27\xB0C'
 
-a = 123456
+print(word1, word2, word3, sep=', ', end=' -> ')
+print(word4, end='')
+print('   C:\\Prog Fil\\job')
 
-length = len(str(a))
+name = 'Игорь'
+email = 'aaa@bbb.ru'
+age = 32
+ves = 92.636
 
-print(length)
+# 1 способ (плэйсхолдеры)
+# %s - string
+# %d - digit (елое число)
+# %f - float
+print('Имя: %s, E-mail: %s, Возраст: %d' % (name, email, age))
 
-word = input('введите слово длинее 4 букв: ')
-if not word or len(word) < 4:
-    print('вы ничего не ввели или слово короче 4')
-else:
-    print('в вашем слове "' + word + '"', len(word), 'букв')
+# 2 способ
+print('Имя: {}, E-mail: {}, Возраст: {}'.format(name, email, age))
+
+# 3 способ
+print(f'Имя: {name}, E-mail: {email}, Возраст: {age}, Вес: {ves:.3f}')

@@ -1,22 +1,16 @@
-a = int(input('a = '))
-# b = int(input('b = '))
-# c = int(input('c = '))
-if a == 0:
-    print('введи другое "a"')
-else:
-    b = int(input('b = '))
-    c = int(input('c = '))
-    d = b ** 2 - 4 * a * c
-    if d < 0:
-        print('нет корней')
-    elif d == 0:
-        print(f'корень: {x:.2f}')
-    else:
-        x1 = (-b + d  ** 0.5) / 2 * a
-        x2 = (-b - d  ** 0.5) / 2 * a
-        print(f'корни:\n\tx1 = {x1:.2f}\n\tx2 = {x2:.2f}')
-# else:
-#     print('введи другое "a"')
-
-
-
+# Циклы:
+# while
+# while <условие>:
+#     команды
+# for
+counter = 0 # Обнуляем счетчик
+# цикл из 5 итераций
+while counter < 5:
+    print(f'Итерация номер: {counter + 1}')
+    #count = count + 1 # инкремент
+    counter +=1 # инкремент (краткая запись)
+print(f'Итого в count уже {counter}')
+print('Обратный отсчет:')
+while counter > 0:
+    print(f'{counter}')
+    counter -=1 # декремент (краткая запись)

@@ -1,22 +1,12 @@
-# min, max, average, summ, production
+# factorial
 N = 5
-total = 0
-min_val = float('inf')  # плюс бесконечность
-max_val = float('-inf')  # минус бесконечность
-prod = 1
+fact = 1
 
-for _ in range(N):
-    num = int(input('введи целое число: '))
-    if num < min_val:
-        min_val = num
-    if num > max_val:
-        max_val = num
-    total += num
-    prod *= num
-    average = total / N
+for i in range(1, N + 1):
+    fact *= i
+print(fact)
 
-print(f'Сумма: {total}')
-print(f'Произведение: {prod}')
-print(f'Cp. арифметическое: {average}')
-print(f'Минимум: {min_val}')
-print(f'Максимум: {max_val}')
+for i in range(1, 10):
+    for j in range(1, 10):
+        print(f'{i} * {j} = {i * j}', end='\t')
+    print()

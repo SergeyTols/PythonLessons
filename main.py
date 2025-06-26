@@ -1,31 +1,22 @@
-# Формат вывода
-# \ - вутри строки: начало управляющей последовательности
-# word1 = 'пришел\n\t'
-# word2 = 'увидел'
-# word3 = 'победил'
-# word4 = '27\xB0C'
-#
-# print(word1, word2, word3, sep=', ', end=' -> ')
-# print(word4, end='')
-# print('   C:\\Prog Fil\\job')
+a = int(input('a = '))
+# b = int(input('b = '))
+# c = int(input('c = '))
+if a == 0:
+    print('введи другое "a"')
+else:
+    b = int(input('b = '))
+    c = int(input('c = '))
+    d = b ** 2 - 4 * a * c
+    if d < 0:
+        print('нет корней')
+    elif d == 0:
+        print(f'корень: {x:.2f}')
+    else:
+        x1 = (-b + d  ** 0.5) / 2 * a
+        x2 = (-b - d  ** 0.5) / 2 * a
+        print(f'корни:\n\tx1 = {x1:.2f}\n\tx2 = {x2:.2f}')
+# else:
+#     print('введи другое "a"')
 
-name = 'Игорь'
-email = 'aaa@bbb.ru'
-age = 32
-ves = 92.636
-#
-# # 1 способ (плэйсхолдеры)
-# # %s - string
-# # %d - digit (целое число)
-# # %f - float
-# print('Имя: %s, E-mail: %s, Возраст: %d' % (name, email, age))
-#
-# # 2 способ
-# print('Имя: {}, E-mail: {}, Возраст: {}'.format(name, email, age))
-#
-# # 3 способ
-# print(f'Имя: {name}, E-mail: {email}, Возраст: {age}, Вес: {ves:.3f}')
 
-print(f' Имя: {name}\n E-mail:  {email}\n Возраст: {age}\n Вес:     {ves:.3f}')
 
-print(f' Имя: {name:12} E-mail:  {email} Возраст: {age} Вес:     {ves:.3f}')

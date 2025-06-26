@@ -1,10 +1,9 @@
-temp = int(input('Ввеи рост: '))
+height = int(input('Введи рост: '))
 
-while 150 > temp > 180:
+while height > 180 or height < 150:
+# while 150 > height < 180:
     print('не подходит')
-    temp = int(input('Ввеи рост: '))
+    height = int(input('Введи рост: '))
 
-print(f'{temp} подходит')
-
-
+print(f'{height} подходит')
 

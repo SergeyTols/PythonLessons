@@ -1,16 +1,21 @@
 # Циклы:
-# while
-# while <условие>:
-#     команды
-# for
-counter = 0 # Обнуляем счетчик
-# цикл из 5 итераций
-while counter < 5:
-    print(f'Итерация номер: {counter + 1}')
-    #count = count + 1 # инкремент
-    counter +=1 # инкремент (краткая запись)
-print(f'Итого в count уже {counter}')
-print('Обратный отсчет:')
-while counter > 0:
-    print(f'{counter}')
-    counter -=1 # декремент (краткая запись)
+# word = ''
+# while len(word := input('Введите слово длинее 3 символов: ')) <= 3:
+#     word = input('Введите слово длинее 3 символов: ')
+#     print(f'{word} хорошее слово')
+#
+# print(f'ghfdbkmyj: "{word}"')
+
+# Цикл до ввода пустой строки
+# без :=
+word = input('Введите слово: ')
+while word != '':
+    print(f'Слово: {word}')
+    word = input('Введите слово: ')
+
+print('Пустая строка')
+
+# c использованием :=
+while (word := input('Введите слово: ')) != '':
+    print(f'Слово: "{word}"')
+print('Пустая строка')

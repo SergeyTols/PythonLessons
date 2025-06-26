@@ -13,8 +13,5 @@
 # for _ in range(5):
 #     print("hi")
 
-for i in range(0, 101):
-    if i % 10 == 5:
-        if i == 15:
-            continue
+for i in reversed(range(0, 101, 5)):
         print(i)

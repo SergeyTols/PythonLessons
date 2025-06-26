@@ -1,17 +1,22 @@
-# for <переменная> in interable:
+# min, max, average, summ, production
+N = 5
+total = 0
+min_val = float('inf')  # плюс бесконечность
+max_val = float('-inf')  # минус бесконечность
+prod = 1
 
-# word = 'поток'
-#
-# for ch in word:
-#     print(ch)
-#                  0      3     1
-# итератор range(start, stop, step)
+for _ in range(N):
+    num = int(input('введи целое число: '))
+    if num < min_val:
+        min_val = num
+    if num > max_val:
+        max_val = num
+    total += num
+    prod *= num
+    average = total / N
 
-# for i in range(0,3,1):
-#     print(i)
-
-# for _ in range(5):
-#     print("hi")
-
-for i in reversed(range(0, 101, 5)):
-        print(i)
+print(f'Сумма: {total}')
+print(f'Произведение: {prod}')
+print(f'Cp. арифметическое: {average}')
+print(f'Минимум: {min_val}')
+print(f'Максимум: {max_val}')

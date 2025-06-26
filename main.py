@@ -34,3 +34,4 @@ while flag:
     else:
         print('давай ещё')
 print('заглядывай')
+

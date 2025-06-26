@@ -1,7 +1,3 @@
-counter = 1
-
-while counter <= 100:
-    if counter % 10 == 3:
-        print(counter, end=', ')
-    counter += 1
-
+word = 'поток'
+if 'ток' in word:
+    print('есть')

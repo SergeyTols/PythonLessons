@@ -26,6 +26,6 @@ ves = 92.636
 # # 3 способ
 # print(f'Имя: {name}, E-mail: {email}, Возраст: {age}, Вес: {ves:.3f}')
 
-print(f' Имя:     {name}\n E-mail:  {email}\n Возраст: {age}\n Вес:     {ves:.3f}')
+print(f' Имя: {name}\n E-mail:  {email}\n Возраст: {age}\n Вес:     {ves:.3f}')
 
-print('Имя:', name, 'E-mail:', email, 'Возраст:', age, 'Вес:', ves)
+print(f' Имя: {name:12} E-mail:  {email} Возраст: {age} Вес:     {ves:.3f}')

@@ -16,3 +16,5 @@ print(keys)
 for item in keys:
     slovo += (chr(item))
 print(slovo)
+
+# abc = 'алфавит' ; сдвиг на +3 буквы - ДЗ

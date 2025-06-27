@@ -1,20 +1,28 @@
-# Таблица символов
-# Две удобные функции
-# ord(символ) - возвращает код символа в Unicode
-# chr(код) - возвращает символ по Unicode-коду
+# phrase = 'ЯзыК PythoN'
+#
+# print(phrase.upper()) # все маленькие
+# print(phrase.lower()) # все большие
+# print(phrase.capitalize()) # только первая большая
+# print(phrase.title()) # все с большой
+# print('Ура!' * 3)
+# print('телевизор'.count('е'))
+# print('Python'.index('h')) # узнать индекс первой подходящей буквы в слове
 
-# print({ord('☃')})
-# print(chr(9731))
 
-word = 'Python'
-slovo = ''
-keys = set()
+# for ch in (word := input('Введите слово: ')):
+#     i = word.index(ch)
+#     print(ch * (i + 1), end='')
 
-for ch in word:
-    keys.add(ord(ch))
-print(keys)
-for item in keys:
-    slovo += (chr(item))
-print(slovo)
+# word = 'привет'
+# for i in range(len(word) + 1):
+#     print(word[i - 1] * i, end='')
 
-# abc = 'алфавит' ; сдвиг на +3 буквы - ДЗ
+word = '          статор            '
+
+print(word.strip()) # убрать пробелы справа и слева
+print(word.lstrip()) # убрать пробелы слева
+print(word.rstrip())# убрать пробелы справа
+
+word = 'ротор'
+
+print(word.strip('р')) # убрать символ справа и слева

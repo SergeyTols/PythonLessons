@@ -4,14 +4,13 @@ hase_ace = False
 
 while cards:
     card = cards.pop()
-    if card == 'Туз':
+    if card == 'туз':
         cards.add(card)
         hase_ace = True
     else:
         print(card)
-
-    if hase_ace and len(cards) == 1:
-        break
+        if hase_ace and len(cards) == 1:
+            break
 
 # PEP8 - правила именования
 # c, l, O, I - не должны использоваться в переменных

@@ -1,13 +1,18 @@
 # Таблица символов
-s = '\xB0'
-u = '\u2603'
-
 # Две удобные функции
 # ord(символ) - возвращает код символа в Unicode
 # chr(код) - возвращает символ по Unicode-коду
 
-print('25' + s + 'C')
-print(u)
-print({ord('☃')})
-print(chr(9731))
-print(chr(176))  # ASCII и Unicode
+# print({ord('☃')})
+# print(chr(9731))
+
+word = 'Python'
+slovo = ''
+keys = set()
+
+for ch in word:
+    keys.add(ord(ch))
+print(keys)
+for item in keys:
+    slovo += (chr(item))
+print(slovo)

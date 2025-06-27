@@ -1,14 +1,48 @@
-# города
-s = set()
+cards = {3, 7, 'туз', 'валет', 10}
+second_card = {'туз'}
+hase_ace = False
 
-# city = input('Назовите горлод: ')
-
-while (city := input('Назовите горлод: ')) != '':
-    if city in s:
-        print('такой был')
+while cards:
+    card = cards.pop()
+    if card == 'Туз':
+        cards.add(card)
+        hase_ace = True
     else:
-        s.add(city)
+        print(card)
 
-print(f'было названо городов: {len(s)}')
-for item in s:
-    print('\t', item)
+    if hase_ace and len(cards) == 1:
+        break
+
+# PEP8 - правила именования
+# c, l, O, I - не должны использоваться в переменных
+
+# Операции над множествами
+
+a = {3, 5, 7}
+b = {3, 5, 7, 9, 11}
+
+# объединенае множеств
+# c = a.union(b)
+c = b | a
+print(c)
+
+# Пересечение
+# c = a.intersection(b) # выбор одинаковых эл-тов
+c = a & b
+print(c)
+
+# Разность
+# c = b.difference(a) # есть в 1-м, нет во 2-м
+c = b - a
+print(c)
+
+# Симметричная разность
+c = a.symmetric_difference(b)  # есть только в одном из двух
+# c = b ^ a
+print(c)
+
+c = a < b
+print(c)
+
+c = a == b
+print(c)

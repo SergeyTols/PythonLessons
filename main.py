@@ -1,47 +1,21 @@
-cards = {3, 7, 'туз', 'валет', 10}
-second_card = {'туз'}
-hase_ace = False
+# Строки (immutable, iterable) - неизменяемый тип данных
+#    012345
+s = 'Python'
+# s[3] = 'y' error (immutable)
+# Индекс может быть отрицательным (с конца)
+print(s[0])
 
-while cards:
-    card = cards.pop()
-    if card == 'туз':
-        cards.add(card)
-        hase_ace = True
-    else:
-        print(card)
-        if hase_ace and len(cards) == 1:
-            break
 
-# PEP8 - правила именования
-# c, l, O, I - не должны использоваться в переменных
+words = 'язык питон'
+vovel = 0
 
-# Операции над множествами
+for ch in words: #
+    if ch in {'а', 'е', 'и', 'о', 'у', 'э', 'ю', 'я', 'ы'}:
+        vovel += 1
+    # if ch in 'аеиоуэюяы':
+    #     vovel += 1
+print(f'гласных в строке "{words}" = {vovel}')
 
-a = {3, 5, 7}
-b = {3, 5, 7, 9, 11}
-
-# объединенае множеств
-# c = a.union(b)
-c = b | a
-print(c)
-
-# Пересечение
-# c = a.intersection(b) # выбор одинаковых эл-тов
-c = a & b
-print(c)
-
-# Разность
-# c = b.difference(a) # есть в 1-м, нет во 2-м
-c = b - a
-print(c)
-
-# Симметричная разность
-c = a.symmetric_difference(b)  # есть только в одном из двух
-# c = b ^ a
-print(c)
-
-c = a < b
-print(c)
-
-c = a == b
-print(c)
+# перебор строки по числовому индексу
+for index in range(len(words)):
+    print(words[index], end=' ')

@@ -1,13 +1,12 @@
 # #  Кортеж (tuple, immutable) - тот же список, но не изменяемый; меньше жор памяти, быстрее обработка
 # #  можно спросить длинну, перебрать содержимое в цикле
 #  help(sorted)
-#   Функция sorted() - возвращает сортированный список
+#   Функция enumerate() - в цикле for возвращает пару (index, v)
 
-s = {'Вова', 'Вася', 'Петя'}  #  множество
-r = False
-lst = sorted(s, reverse=r)
+fio = ['Вова', 'Вася', 'Петя']
 
-# lst = list(s)
-# lst.sort()
+# for item in enumerate(fio):
+#     print(item)
 
-print(*lst, sep=', ')
+for i, v in enumerate(fio):
+    print(f'{i + 1}. {v}.')

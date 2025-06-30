@@ -1,43 +1,31 @@
-# Списки (list)
-# работают срезы, как в строке
+# lst = list(range(10))
+# for item in lst:
+#     print(item, '-', item ** 2)
+from operator import truediv
 
-# s = {'3', '4', '5'}
-# lst = list(range(1,11))
-# lst = list(s)
+# lst = list(range(10))
+# # slice = lst[:len(lst):2]
+# sl = lst[::2]
+# print(sl)
+# for item in range(0, len(lst), 2):
+#     print(item, '-', item ** 2)
 
-# lst = []
-# lst = list[1, 2, 23]
-# lst = list('Python')
-# lst = [1, 2, 3] * 3  #  повторится несколько раз
-# lst = [1] * 10
-# lst = [1, 2, 3]
-# print(type(lst))
-# print(lst[:2])
-
-# s = 'сабака'
-# lst = list(s)
-# lst[1] = 'о'
+# lst = list(range(10))
+# del lst[2]
+# print(lst)
+# del lst[::2]
 # print(lst)
 
-# s = []
-# for i in range(11):
-#     s.append(i)
-# print(s)
+# lst = list(range(10))
+# lst.pop()
+# lst.pop(5)
+# print(lst)
 
-# s1 = [1, 2, 3]
-# s2 = [4, 5, 6]
-# # s1.extend(s2)
-# print(s1)
+# lst = [1, 2, 2, 3, 4, 5]
+# lst.remove(2)
+# print(lst)
 
-# s1 = [1, 2, 3]
-# s2 = [4, 5, 6]
-# s = s1 + s2
-# print(s)
-
-# s1 = [1, 2, 3] + [23]
-# s2 = [4, 5, 6]
-# s1 += [4]
-# s1 += ['f']
-# s1[0] = 22
-# print(s1)
-
+lst = [1, 7, 3, 5, 6, 4, 2]
+lst.sort(reverse=True)
+# lst.reverse()
+print(lst)

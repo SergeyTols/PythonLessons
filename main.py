@@ -17,14 +17,14 @@
 
 lst = []
 while (item := input('Ведите ингредиенты: ')) != '':
-    lst.append(item)
+    lst.append(item)  #добавить в список
 
-temp = set(lst)
-lst = list(temp)
+temp = set(lst)    # Убрать
+lst = list(temp)   #  повторения
 
 print(f'У нас есть {len(lst)} ингредиентов')
 
-lst.sort()
+lst.sort()   # сортировка списка
 for i in range(len(lst)):
-    print(f'\t{i + 1}. {lst[i]}')
+    print(f'\t{i + 1}. {lst[i]}')  # вывод списка
 

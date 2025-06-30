@@ -19,3 +19,4 @@ res = res.replace('-', ') ', 1)
 
 print(res)
 print(s.replace('-', ' (', 1).replace('-', ') ', 1))
+

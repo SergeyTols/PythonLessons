@@ -1,16 +1,10 @@
-# Списки
-# Имитация стека
+#  Списки
+#  Создание аббревиатур
 
-N = 5
+lst = []
+res_lst = ''
+while (word := input('Введите слово: ').strip()) != '':
+    lst.append(word[0].upper())
 
-lst_books = []
-
-for i in range(N):
-    print(f'положь книгу {i + 1}')
-    lst_books.append(i + 1)
-
-print('---')
-
-while lst_books:
-    item = lst_books.pop()
-    print(f'бери книгу {item}')
+print('Получилось', end=': ')
+print(*lst[:10], sep='')

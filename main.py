@@ -1,30 +1,16 @@
-# a = ['a', 'b', 'c']
-# # b = a
-# b = a[:]  #  b = a.copy()  - синонимы
-# b.append('d')  # b += ['d']
-# print(id(a))
-# print(id(b))
-# print(a)
-# print(b)
+# Списки
+# Имитация стека
 
-# lst = []
-# while (item := input('Ведите ингредиенты: ')) != '':
-#     lst.append(item)
-# print(f'У нас есть {len(lst)} ингредиентов')
-# lst.sort()
-# for i in range(len(lst)):
-#     print(f'\t{i + 1}. {lst[i]}')
+N = 5
 
-lst = []
-while (item := input('Ведите ингредиенты: ')) != '':
-    lst.append(item)  #добавить в список
+lst_books = []
 
-temp = set(lst)    # Убрать
-lst = list(temp)   #  повторения
+for i in range(N):
+    print(f'положь книгу {i + 1}')
+    lst_books.append(i + 1)
 
-print(f'У нас есть {len(lst)} ингредиентов')
+print('---')
 
-lst.sort()   # сортировка списка
-for i in range(len(lst)):
-    print(f'\t{i + 1}. {lst[i]}')  # вывод списка
-
+while lst_books:
+    item = lst_books.pop()
+    print(f'бери книгу {item}')

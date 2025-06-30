@@ -4,22 +4,18 @@
 # 2. find('подстрока', start) с позиции start
 # 3. find('подстрока', start, end) c ... по ...
 
-si = 'смотреть, вертеть, видеть'
 
-index = si.find('еть', 10)  # ищем с начала строки "s"
 
-s = 'синхрофазотрон'
-ch = 'о'
-i = 0
-start = 0
+s = 'тиливизор'
 
-if ch in s:
-    count = s.count(ch)
-    i = s.find(ch, 0)
-    stert = i + 1
-    print(f'{ch} в "{s}" {count}')
+print(s.replace('и','е', 2))
 
-    print(f'Её позиция: {i}', end=' ')
 
-else:
-    print(f'в слове "{s}" нет буквы {ch}')
+
+s = '+7-012-345-67-89'  # => +7 (012) 345-67-89
+
+res = s.replace('-', ' (', 1)
+res = res.replace('-', ') ', 1)
+
+print(res)
+print(s.replace('-', ' (', 1).replace('-', ') ', 1))

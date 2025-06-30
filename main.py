@@ -1,31 +1,30 @@
-# lst = list(range(10))
-# for item in lst:
-#     print(item, '-', item ** 2)
-from operator import truediv
+# a = ['a', 'b', 'c']
+# # b = a
+# b = a[:]  #  b = a.copy()  - синонимы
+# b.append('d')  # b += ['d']
+# print(id(a))
+# print(id(b))
+# print(a)
+# print(b)
 
-# lst = list(range(10))
-# # slice = lst[:len(lst):2]
-# sl = lst[::2]
-# print(sl)
-# for item in range(0, len(lst), 2):
-#     print(item, '-', item ** 2)
+# lst = []
+# while (item := input('Ведите ингредиенты: ')) != '':
+#     lst.append(item)
+# print(f'У нас есть {len(lst)} ингредиентов')
+# lst.sort()
+# for i in range(len(lst)):
+#     print(f'\t{i + 1}. {lst[i]}')
 
-# lst = list(range(10))
-# del lst[2]
-# print(lst)
-# del lst[::2]
-# print(lst)
+lst = []
+while (item := input('Ведите ингредиенты: ')) != '':
+    lst.append(item)
 
-# lst = list(range(10))
-# lst.pop()
-# lst.pop(5)
-# print(lst)
+temp = set(lst)
+lst = list(temp)
 
-# lst = [1, 2, 2, 3, 4, 5]
-# lst.remove(2)
-# print(lst)
+print(f'У нас есть {len(lst)} ингредиентов')
 
-lst = [1, 7, 3, 5, 6, 4, 2]
-lst.sort(reverse=True)
-# lst.reverse()
-print(lst)
+lst.sort()
+for i in range(len(lst)):
+    print(f'\t{i + 1}. {lst[i]}')
+

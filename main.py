@@ -19,7 +19,7 @@ s = 'Дорог Рим'
 temp = s.lower()
 city = temp[:5][::-1]
 res = city + ' ' + temp[6:][::-1] + city
-print(res)
+print(res.title())
 
 
 

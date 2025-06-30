@@ -1,16 +1,13 @@
 # #  Кортеж (tuple, immutable) - тот же список, но не изменяемый; меньше жор памяти, быстрее обработка
 # #  можно спросить длинну, перебрать содержимое в цикле
+#  help(sorted)
+#   Функция sorted() - возвращает сортированный список
 
-N = 3
-studs = []
+s = {'Вова', 'Вася', 'Петя'}  #  множество
+r = False
+lst = sorted(s, reverse=r)
 
-for _ in range(N):
+# lst = list(s)
+# lst.sort()
 
-    name, score = input('Имя: '), float(input('Ср. балл: '))
-    studs.append((name, score))
-
-print(studs)
-for st in studs:
-    name, score = st
-    print('Имя: ', name)
-    print('Ср. балл: ', score)
+print(*lst, sep=', ')

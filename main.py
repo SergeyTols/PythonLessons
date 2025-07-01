@@ -1,21 +1,38 @@
-# ## Списочные выражения (list comprehension)
-# ## Вложенные списки
+## Словари
+# Пустой словарь
+# 1. d = {}
+# 2. d = dict()
+
+# Предзаполненный словарь
+d = {
+    'table': ['таблица', 'стол'],
+    'well': ['хорошо','колодец','скважина'],
+    'chair': 'стул',
+    'apple': 'яблоко',
+    1: 'один',
+}
+# d['apple'].append('тыблоко')
+
+# print(d['table'])
+# print(d[1])
+# print(d['well'])
+# print(d['well'][1])
+# d['plum'] = ['слива']
+# d['well'].append('дыра')
+# print(d['well'])
+# print(d['plum'])
+# print(d)
+
+# del d['well']   # Удалить весь список из словаря
+# # print(d)    # - словарь целиком, как есть
 #
-matrix = []
+# # вывести красивее
+# for key in d:
+#     print(key, '->', d[key])
 
-start = 1
-N = 4
+deleted_item = d.pop('apple')
+print('Удалится элемент: ', deleted_item)
 
-for i in range(N):
-    table = []
-    for j in range(start, start + N):
-        table.append(j)
-    matrix.append(table)
-    table = []
-    start += N
-
-print(*matrix)
-
-# N = 3
-# matrix = [[i + j for j in range(N)] for i in range(1, 9, 3)]
-# print(matrix)
+print('Есть ли стул в словаре: ')
+if 'chair' in d:
+    print('Есть!')

@@ -1,25 +1,47 @@
-## Словари
+## Функции
+# Scope (local or global) - область видимости переменной
+# Синтаксис:
+# def <имя функции>([параметры]):
+#     команды
+# Если функция ничего не возвращает - это процедура
+# В функцию передается копия глобальной переменной
+from itertools import count
 
-res = {}
+person = 'Пётр'  # (global) глобальная переменная
+count = 0
 
-text = """Глава государства указал правительству интегрировать в мессенджер государственные 
-и банковские услуги при участии Банка России. Необходимо обеспечить доступ граждан к наиболее 
-востребованным услугам, следует из поручений по итогам совещания с членами правительства. 
-Документ опубликован на сайте Кремля.
-"""
+def greet():
+    print('Привет')
 
-commas = (',', '.', '?', '!')
 
-for a in commas:
-   text = text.replace(a, '')
-lst_text = sorted(text.strip().lower().split())
+greet()
+greet()
 
-for item in lst_text:
-    if item in res.keys():
-        res[item] += 1
-    else:
-        res[item] = 1
 
-print('Частотный анализ слов текста')
-for k, v in res.items():
-    print(f'\t{k}: {v}')
+def greet_to_name(name='noneme'):  # функция задана с ПАРАМЕТРОМ   #| (local) локальная переменная
+    print('Привет', name)                                # |
+
+
+greet_to_name('Вова')  # функция вызвана с АРГУМЕНТОМ
+
+
+greet_to_name()
+
+
+def increment():
+    global count     # доступ к глобальной переменной из функции
+    count += 1
+    print(count)
+
+
+def print_list(array=None):
+    if array is None:
+        array = []
+    for item in array:
+        print(item)
+
+
+increment()
+print_list(['мясо', 'рыба', 'тесто', 'детство'])
+
+

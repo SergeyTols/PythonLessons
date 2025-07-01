@@ -10,29 +10,34 @@ d = {
     'chair': 'стул',
     'apple': 'яблоко',
     1: 'один',
+    (55.75, 37.5): 'Москва'
 }
-# d['apple'].append('тыблоко')
 
-# print(d['table'])
-# print(d[1])
-# print(d['well'])
-# print(d['well'][1])
-# d['plum'] = ['слива']
-# d['well'].append('дыра')
-# print(d['well'])
-# print(d['plum'])
-# print(d)
+print(d[(55.75, 37.5)])
 
-# del d['well']   # Удалить весь список из словаря
-# # print(d)    # - словарь целиком, как есть
-#
-# # Перебор по умолчанию + вывести красивее
+# Перебор по умолчанию + вывести красивее
 # for key in d:
 #     print(key, '->', d[key])
 
-deleted_item = d.pop('apple')
-print('Удалится элемент: ', deleted_item)
+# for key in d.keys(): # Перебор ключей
+#     print(key, '->', d[key])
+#
+# for values in d.keys(): # Перебор значений
+#     print(values, '->', d[values])
+#
+# for k, v in d.items():
+#     print(k, '->', v)
 
+# print(d.keys())
+# print(d.values())
+
+# deleted_item = d.pop('apple')
+# print('Удалится элемент: ', deleted_item)
+#
 print('Есть ли стул в словаре: ')
 if 'chair' in d:
     print('Есть!')
+
+print('Доступ к несуществующему ключу без "исключений"')
+pear = d.get('pear', 'Груши нет')  # .get() - мягкое обращение к ключу
+print('Где груша: ', pear)

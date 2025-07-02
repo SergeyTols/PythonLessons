@@ -1,15 +1,21 @@
-# retern vs yield(возвращает значение, но не завершает работу; не создает лист, создает генератор)
+#
 
-def generate_list():
-    for i in range(5):
-        return i
+def print_goodbye(arg):
+    print('Goodbye', end=' ')
 
 
-def generate_list2():
-    for i in range(5):
-        yield i
+def print_cruel(arg):
+    print('cruel', end=' ')
 
-array = generate_list()
-lst = tuple(generate_list2())
-print(array)
-print(lst)
+
+def print_world(arg):
+    print('world', end=' ')
+
+
+def main():
+    print_goodbye(1)
+    print_cruel(1)
+    print_world(2)
+
+
+main()

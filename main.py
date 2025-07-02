@@ -1,33 +1,21 @@
 # Функции
-# Return Value
-# Чистая ф-ция - ф-ция, не имеющая эффекта на переменные и элементы, не влияет на ход выполнения программы
-# Вычисление квадрата числа
+# Функция с аннотацией
+num_to_str = {
 
-def square(num):
-    return num ** 2
-    # temp = num ** 2
-    # return temp
+}
 
-
-
-def even_odd(num):
-    if num % 2 == 0:
-        return 'Четное'
-    return 'Нечетное'
-    # if num % 2 == 0:
-    #     return 'Четное'
-    # else:
-    #     return 'Нечетное'
+                      #any
+def number_to_words(n: int) -> str:  # При использовании ретерн
+    """
+    Функция... (тут описание)
+    :param n: двузначное число
+    :return: это число словами
+    """
+    if len(str(n)) > 2:
+        return  'Введите двузначное число'
+    if len(str(n)) == 1 or n in num_to_str:
+        return num_to_str[int(n)]
+    return num_to_str[int(str(n)[0] + '0')] + ' ' + num_to_str[int(str(n)[1])]
 
 
-
-print(even_odd(5))
-t = square(5)
-print(t)
-
-# ДЗ: Функция: Вывести число словами 56 -> триста пятьдесят шесть.
-# def num_to_word(num):
-#     if str(num) > 2:
-#         return
-#     e = num % 10
-#     le = ['один', 'два']
+print(number_to_words(13))

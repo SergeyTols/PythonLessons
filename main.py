@@ -1,14 +1,17 @@
-#  Возвращение нескольких значений из ф-ции
-#  при распаковке "*" может быть только у одного аргумента
-from tkinter.font import names
+#  Функция с переменным числом аргументов
+
+def multy(*args):
+    print(len(args))  # подсчет числа аргументов
+    print(args)  # вывод по индексу или перебором в цикле
+    # if len(args) == 0:
+    #     return 0
+    if not args:
+        return 0
+    result = 1
+    for arg in args:
+        result *= arg
+    return result
 
 
-def coordinates() -> tuple:
-    return 5.4, 3.2, 3.9, 6.5, 4.0
-
-
-x, y, *rest = coordinates()    # распаковка (кортежа)  # *rest - список oставшихся значений.
-print(f'x = {x}, y = {y}, rest = {rest}')
-
-*names, surname = 'Остап Сулейман Бендер'.split()
-print(names, surname)
+# multy(1, 2)
+print(multy(5.4, 3.2, 4.7))

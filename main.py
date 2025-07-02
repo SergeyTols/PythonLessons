@@ -1,47 +1,14 @@
-#   Оператор is применяем на практике
-
-def print_array(array: list, start: int = None):
-    if start > len(array):
-        return
-    if start is None:
-        for i in array:
-            print(i)
-    else:
-        for i in range(start, len(array)):
-            print(array[i])
+#  Возвращение нескольких значений из ф-ции
+#  при распаковке "*" может быть только у одного аргумента
+from tkinter.font import names
 
 
-a = [1, 2, 3]
-print_array(a, 1)
-
-# my_refregirator = ['колбаса', 'сыр', 'масло']
-# # his_refregirator = ['колбаса', 'сыр', 'масло']
-#
-# his_refregirator = my_refregirator
-# my_refregirator += ['мясо']
-# his_refregirator += ['хлеб']
-# print(my_refregirator == his_refregirator)
-# print(id(my_refregirator) == id(his_refregirator))
-# print(his_refregirator)
-# print(my_refregirator)
-# temp = None
-# print(type(temp))
-# print(temp is None)
-
-#   Словарь также изменяем, как и множество со списком
-# d = {'a': 1}
-# print(id(d))
-# d['a'] += 1
-# print(id(d))
-
-# a = [0]
-# print(id(a))
-# a [0] += 1
-# print(id(a))
-
-# a = 1
-# print(id(a))
-# a += 1
-# print(id(a))
+def coordinates() -> tuple:
+    return 5.4, 3.2, 3.9, 6.5, 4.0
 
 
+x, y, *rest = coordinates()    # распаковка (кортежа)  # *rest - список oставшихся значений.
+print(f'x = {x}, y = {y}, rest = {rest}')
+
+*names, surname = 'Остап Сулейман Бендер'.split()
+print(names, surname)

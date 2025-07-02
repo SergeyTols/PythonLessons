@@ -1,54 +1,23 @@
-#  Функция с переменным числом аргументов
-
-def multy(*args, first=0):
-    # print(len(args))  # подсчет числа аргументов
-    # print(args)  # вывод по индексу или перебором в цикле
-    # if len(args) == 0:
-    #     return 0
-    if not args:
-        return first
-    result = first
-    for arg in args:
-        result *= arg
-    return result
+#       Позиционные | Именованные
+def print_any(*args, **kwargs):
+    for i in args:
+        print(i)
+    for k, v in kwargs.items():
+        print(k, '=', v)
 
 
-# multy(1, 2)
-print(multy(2, 3, 4, first=5))
+print_any('Дмитрий', 'Колесов', city='Москва', age=27)
 
 
-def fio(name, surname):
-    return f'{name} {surname}'
+def profile(name, surname, city, *children, **additional):
+    print(f'Имя: {name}')
+    print(f'Фамилия: {surname}')
+    print(f'Из города: {city}')
+    if len(children) > 0:
+        print('Дети:',', '.join(children))
+    if 'hobbie' in additional:
+        print('Хобби:', ', '.join(additional['hobbie']))
+    # print(additional)
 
 
-print(fio(name='Остап', surname='Бендер'))
-
-
-def calc(*args: tuple, operator: str ='+') -> any:
-    match operator:
-        case '+':
-            result = 0
-            for arg in args:
-                result += arg
-        case '*':
-            result = 1
-            for arg in args:
-                result *= arg
-        case _:
-            return -float('inf')
-    return result
-print(calc(2, 3, 4, operator='*'))
-
-
-def sandwich(type_of_meal, with_onion=False, with_tomato=False):
-    print('Булочка')
-    if with_onion:
-        print('Лук')
-    print(type_of_meal)
-    if with_tomato:
-        print('Помидоры')
-    print('Булочка')
-
-
-sandwich('Котлета', with_onion=True, with_tomato=True)
-
+profile('Дмитрий', 'Колесов', 'Волгоград', 'Мария', 'Петр', hobbie=['Филателия', 'Шахматы'])

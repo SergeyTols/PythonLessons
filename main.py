@@ -1,13 +1,15 @@
+# Анонимные ф-ции
+# Ключ сортировки
 
+fruits = ['ананас', 'банан', 'ежевика', 'арбуз', 'малина']
 
-numbers = range(1,11)
-squar = {n: n ** 2 for n in range(1, 11) if n % 2 == 0}
-print(squar)
+# print(sorted(fruits, key=lambda s: (len(s), s[-1])))
 
-source_dict = {
-    'x': 1,
-    'y': 2,
-    'z': 3,
-}
-dest_dict = {k: v * 2 for k, v in source_dict.items()}
-print(dest_dict)
+goods = [
+    ['Утюг', 1000, 2],
+    ['Фен', 1000, 5],
+    ['Телевизор', 8000, 3],
+]
+
+print(sorted(goods, key=lambda s: (s[1], s[2], s[0])))  # Сортировка по цене, кол-ву, имени
+

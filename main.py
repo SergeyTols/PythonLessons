@@ -1,21 +1,39 @@
-# Анонимные ф-ции
+# Рекурсия - функция вызывает сама себя
+
+# def factorial(count): # 5! = 1 * 2 * 3 * 4 * 5
+#     result = 1
+#     for i in range(2, count +1):
+#         result *= i
+#     return result
+# for x in range(10):
+#     print(x, factorial(x))
+
+def factorial(x: int):
+    if x == 1 or x == 0:
+        return 1
+    return x * factorial(x - 1)
+
+
+for x in range(11):
+    print(x, factorial(x))
+
 # Потоковый ввод sys.stdin (Ctrl + D)
-import sys
-from idlelib.tooltip import OnHoverTooltipBase
-from operator import index
-
-# data = sys.stdin.readlines()
+# import sys
+# from idlelib.tooltip import OnHoverTooltipBase
+# from operator import index
 #
-# data = [d.strip('\n') for d in data]
-
-data = [d.strip('\n') for d in sys.stdin.readlines()]
-temp = []  # индекс строки в data и число слов в виде кортежей
-for i, s in enumerate(data):
-    temp.append((i, len(s.split())))
-temp.sort(key=lambda x: x[1])
-index = temp[0][0]
-res = sorted(data[index].split())
-print(*res, sep='-')
+# # data = sys.stdin.readlines()
+# #
+# # data = [d.strip('\n') for d in data]
+#
+# data = [d.strip('\n') for d in sys.stdin.readlines()]
+# temp = []  # индекс строки в data и число слов в виде кортежей
+# for i, s in enumerate(data):
+#     temp.append((i, len(s.split())))
+# temp.sort(key=lambda x: x[1])
+# index = temp[0][0]
+# res = sorted(data[index].split())
+# print(*res, sep='-')
 
 # раз два три
 # елочка гори

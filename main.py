@@ -1,23 +1,36 @@
 #   Функция, как объект
-#   передается в другие функции(функции высшего порядка)
-
-def square(num):
-    # return num ** 2
-    return str(num ** 2)
-
-
-nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-squares = map(square, nums)
-print(list(squares))
-# print(squares)
-
-# С помощью map сделать строками, с помощью join слить в 1
+#   Функция критерия отбора элементов списка
+#   Критерий: длинна слова
+def is_longer_six(word):
+    # if len(word) > 6:
+    #     return word
+    return len(word) > 6
 
 
+def first_c(word):
+    return word[0] == 'с'
 
-# words = ['В', 'этом', 'списке', 'останутся', 'слова', 'длинна', 'которых',
-#          'больше', 'шести']
-#
+
+words = ['В', 'этом', 'списке', 'останутся', 'слова', 'длинна', 'которых',
+         'больше', 'шести']
+
 # result = list(filter(is_longer_six, words))
 # print(result)
+#
+# for word1 in filter(is_longer_six, words):
+#     print(word1)
+#
+# result2 = list(filter(first_c, words))
+# print(result2)
+
+# res = list(filter(lambda s: 'ан' in s, words))
+# print(res)
+
+#  sq = list(map(lambda x : x ** 2, range(3, 16)))
+sq = [x ** 2 for x in range(3, 16)]
+print(sq)
+
+long_words = [word for word in words if len(word) > 6]
+print(long_words)
+
 

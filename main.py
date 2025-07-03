@@ -1,17 +1,29 @@
 # Анонимные ф-ции
-# Проверка коллекции
+# Потоковый ввод sys.stdin (Ctrl + D)
+import sys
+
+# data = sys.stdin.readlines()
+#
+# data = [d.strip('\n') for d in data]
+
+data = [d.strip('\n') for d in sys.stdin.readlines()]
+
+print(data)
+
+# for line in sys.stdin:
+#     print(line)
 
 # any - любой элемент коллекции вернул True
 # all - все эл-ты коллекции вернули True
 
-print(all([1, 2, 3])) # все эл-ты ненулевые
-print(all([1, 2, 0])) # один элемент нулевой
-print(all([]))
-
-words = 'один два три'.split()
-
-# list_for_analize = list(map(lambda x: len(x) > 2, words))
-print(any(list(map(lambda x: len(x) > 5, words))))
+# print(all([1, 2, 3])) # все эл-ты ненулевые
+# print(all([1, 2, 0])) # один элемент нулевой
+# print(all([]))
+#
+# words = 'один два три'.split()
+#
+# # list_for_analize = list(map(lambda x: len(x) > 2, words))
+# print(any(list(map(lambda x: len(x) > 5, words))))
 
 # fruits = ['ананас', 'банан', 'ежевика', 'арбуз', 'малина']
 #

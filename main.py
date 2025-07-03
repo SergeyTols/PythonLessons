@@ -1,4 +1,66 @@
-# Рекурсия - функция вызывает сама себя
+# Черепашья графика
+import turtle
+import turtle as t  # Присвоение "прозвища"
+
+# N = 5
+# t.speed(0)
+# colors = ['red', 'purple', 'blue', 'green', 'yellow', 'orange']
+#
+# t.bgcolor('black')
+# angle = 360 // len(colors) -1
+#
+# for x in range(200):
+#     t.pencolor(colors[x % len(colors)])
+#     t.width(x // 100 + 1)
+#     t.forward(x)
+#     t.left(angle)
+#
+# t.mainloop()
+
+def flower():
+    for _ in range(N):
+        t.circle(50)
+        turtle.left(360 // N)
+
+
+# flower()
+
+# t.penup()
+# t.goto(-400, 200)
+# t.pendown()
+
+def square(side):
+    for _ in range(4):
+        t.forward(side)
+        t.right(90)
+
+
+def tree(length):
+    if length < 10:
+        return
+    t.forward(length)
+    t.left(30)
+    tree(length * 0.7)
+    t.right(60)
+    tree(length * 0.7)
+    t.left(30)
+    t.backward(length)
+
+
+t.left(90)
+tree(100)
+
+# for _ in range(N):
+#     square(200)
+#     t.right(360 // N)
+
+# for _ in range(N):
+#     t.circle(50)
+#     turtle.left(360 // N)
+# t.forward(50)
+# t.right(90)
+
+t.mainloop()
 
 # def factorial(count): # 5! = 1 * 2 * 3 * 4 * 5
 #     result = 1
@@ -8,14 +70,14 @@
 # for x in range(10):
 #     print(x, factorial(x))
 
-def factorial(x: int):
-    if x == 1 or x == 0:
-        return 1
-    return x * factorial(x - 1)
-
-
-for x in range(11):
-    print(x, factorial(x))
+# def factorial(x: int):
+#     if x == 1 or x == 0:
+#         return 1
+#     return x * factorial(x - 1)
+#
+#
+# for x in range(11):
+#     print(x, factorial(x))
 
 # Потоковый ввод sys.stdin (Ctrl + D)
 # import sys

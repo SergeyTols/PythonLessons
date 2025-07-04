@@ -6,44 +6,21 @@
 # pip freeze > requirements.txt - создание файла зависимости
 # pip install -r requirements.txt - установка списка библиотек
 # PyPI - Python Package Index (pypi.org)
-from PIL import Image
+from PIL import Image, ImageDraw
 
-image = Image.open('images/Kaa.jpg')
+RED = (255, 0, 0)
+POLY = [(50, 50), (150, 50), (180, 120)]
+image = Image.new('RGB', (600, 400), (0, 0, 255))
 
-x, y = image.size
-mode = image.mode
-pixel = image.load() # загрузить таблицу пикселей
+draw = ImageDraw.Draw(image)
 
-print(f'Ширина = {x}, высота = {y}')
-print(f'Цветовая схема: {mode}')
-
-image_rotate = image.rotate(90)
-image_flip = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
-image_cropped = image.crop((180, 0, 600, 250))
-resized = image.resize((400, 200))
-
-# # Grayscale
-# for i in range(x):
-#     for j in range(y):
-#         r, g, b = pixel[i, j]
-#         average = (r + g + b) // 3
-#         pixel[i, j] = average, average, average
-
-# # Негатив
-# for i in range(x):
-#     for j in range(y):
-#         r, g, b = pixel[i, j]
-#         pixel[i, j] = 255 - r, 255 - g, 255 - b
-
-# # Инверсия
-# for i in range(x):
-#     for j in range(y):
-#         r, g, b = pixel[i, j]
-#         pixel[i, j] = g, r, b
+draw.line((0, 0, 600, 400), fill=(0, 255, 0), width=5)
+draw.line((600, 0, 0, 400), fill=RED, width=5)
+draw.rectangle((10, 10, 590, 390), outline=RED, width=10)
+draw.ellipse((10, 10, 590, 390), outline=RED, width=10)
+draw.polygon(POLY, outline='green', width=15)
+draw.text((100, 80), text='ghfdsg', fill=(0, 0, 0), font_size=40)
 
 
-image.save('images/pyton2.jpg')
-image_rotate.save('images/pyton3.jpg')
-image_flip.save('images/pyton4.jpg')
-image_cropped.save('images/pyton5.jpg')
-resized.save('images/pyton6.jpg')
+image.save('images/deep_blue.jpg')
+

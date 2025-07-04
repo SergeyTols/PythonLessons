@@ -1,17 +1,27 @@
-import sys
+# Встроеннные библиотеки
+# PyPI - Python Package Index (pypi.org)
+# from math import * # Так делать не стоит без причины
+# import math as m
+from math import pi, sqrt, radians, hypot
+from math import sin
 
-strings = [d.strip('\n') for d in sys.stdin.readlines()]
-length = len(strings)  # сколько строк
-rem = length % 3
 
-if rem:
-    strings = strings[:length - rem]
+print('Число Пи ', pi)
+print('Квадратный корень 4:', sqrt(4))
+print('Синус 30 градусов', round(sin(radians(30)), 2))
+print('Гипотенуза для 2 и 3', hypot(3, 2))
 
-for x in range(0, length - rem, 3):
-    summ = sum(len(a) for a in strings[x:x + 3])
-    result = []
-    for s in strings[x:x + 3]:
-        temp = s.lower().split()
-        result += filter(lambda a: len(a) % 2 == summ % 2, temp)
-    result = sorted(set(map(lambda b: b.capitalize(), result)))[:5]
-    print(*result, sep='. ')
+# print('Число Пи ', m.pi)
+# print('Число Пи ', math.pi)
+
+# print(help(m.cos))
+
+# res = sum([1, 2, 3])
+# print(res)
+#
+# res1 = max(1, 3, 2)
+# print(res1)
+#
+# res2 = min('a', 'bc', 'a')
+# print(res2)
+

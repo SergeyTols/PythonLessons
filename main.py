@@ -1,15 +1,11 @@
 # Ctrl + Alt + o - убрать лишний импорт
 
-from PIL import Image
+from PIL import Image, ImageFilter, ImageEnhance
 
-orig = Image.open('images/deep_blue.jpg').convert('RGB')
+orig = Image.open('images/Kaa.jpg')
+# Размытие
+blur_image = orig.filter(ImageFilter.GaussianBlur(radius=3))
 
-up = orig.crop((0, 0, 600, 200))
-down = orig.crop((0, 200, 600, 400))
 
-new = Image.new('RGB',(600, 400))
-new.paste(down,(0, 0))
-new.paste(up,(0, 200))
-
-new.show()
+blur_image.show()
 

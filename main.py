@@ -6,14 +6,14 @@
 # import lib
 from lib import diff
 
-if __name__ == '__main__':
-    print(diff(7, 3))
+# from package1.module import  greet
 
+# from package1 import *  # Для __all__
+# import package1
 
-def main():
-    print(diff(7, 3))
+from package1 import greet, add
 
-# print(__name__)
+print(greet('Мир!'))
+print(add(3, 7))
 
-if __name__ == '__main__':
-    main()
+# print(package1.module._hidden_function())

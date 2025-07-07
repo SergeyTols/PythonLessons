@@ -2,41 +2,18 @@
 # Документы (электронные таблицы)
 # Excel (openpyxl)  pip install openpyxl
 # pip freeze > requirements.txt
+from turtledemo.penrose import start
 
-# Запись данных в существующий файл
+# Чтение данных
 from openpyxl import load_workbook
 
-# открывавем рабочую книгу
-wb = load_workbook('docs/report.xlsx')
-
-# Активный лист
+wb = load_workbook('docs/employees.xlsx')
 ws = wb.active
-# можно по имени
-# ws = wb['Отчет']
 
-# Заголовки
-ws['A1'] = 'ФИО'
-ws['B1'] = 'Должность'
-ws['C1'] = 'Отдел'
+rows_count = ws.max_row # Число заполненных строк
 
-# Данные
-employees = [
-    ['Иванов И.И.', 'Менеджер', 'Продажи'],
-    ['Петров П.П.', 'Бухгалтер', 'Финансы'],
-    ['Сидорова С.С.', 'Аналитек', 'IT'],
-]
+for row in ws.iter_rows(values_only=True):
+    fio, pos, dept = row
+    print(f'Фамилия: {fio}, Должность: {pos}, Отдел: {dept}')
 
-for row, data in enumerate(employees, start=2):
-    ws.cell(row=row, column=1, value=data[0])
-    ws.cell(row=row, column=2, value=data[1])
-    ws.cell(row=row, column=3, value=data[2])
-
-wb.save('docs/employees.xlsx')
-
-
-# способы записи
-# ws['F1'] = 'Привет мир'
-# ws.cell(row=1, column=3, value='Hello')
-
-# wb.save('docs/newtable.xlsx')
-
+# ws['A1'] = "=SUM(A1:A10)"

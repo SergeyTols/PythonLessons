@@ -6,13 +6,24 @@
 # a - append - запись в коннец файла
 # r - read - чтение
 
-fo = open('info.txt', 'wt', encoding='utf-8')
+fo = open('info.txt', 'rt', encoding='utf-8')
 
-print(fo.mode)
-print(fo.name)
-print(fo.encoding)
-
-count = fo.write('Этот текст будет в файле!')
-print('В файл записано', count, 'байт!')
+text = fo.read(11)  # (5) - сколько байт читать
+fo.read(6)  # (5) - сколько байт читать
+# fo.read()  # (5) - сколько байт читать
+text += fo.read(7)
+print('Вот, что было в файле', end=': ')
+print(text)
 
 fo.close()
+
+# fo = open('info.txt', 'wt', encoding='utf-8')
+#
+# print(fo.mode)
+# print(fo.name)
+# print(fo.encoding)
+#
+# count = fo.write('Этот текст будет в файле!')
+# print('В файл записано', count, 'байт!')
+#
+# fo.close()

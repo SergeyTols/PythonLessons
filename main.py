@@ -7,47 +7,10 @@
 # r - read - чтение
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 
-fo = open('info.txt', 'rt', encoding='utf-8')
+# Открытие с менеджером контеста
+with open('info.txt', 'rt', encoding='utf-8') as fo:
+    text = fo.read()
+    lst = text.splitlines()
+    print(lst)
+   # Прроследит, чтобы файл закрылся
 
-# text = fo.readline()
-# print(text)
-# text = fo.readline()
-# print(text)
-
-# Чтение всех строк метод 1
-while text := fo.readline():
-    print(text.rstrip('\n'))
-
-# Чтение всех строк метод 2
-lst = fo.readlines()
-lst = list(map(lambda x: x.strip('\n'), lst))
-print(lst)
-
-# Чтение всех строк метод 3
-text = fo.read()
-lst = text.splitlines()
-print(lst)
-
-fo.close()
-
-# fo = open('info.txt', 'rt', encoding='utf-8')
-#
-# text = fo.read(11)  # (5) - сколько байт читать
-# fo.read(6)  # (5) - сколько байт читать
-# # fo.read()  # (5) - сколько байт читать
-# text += fo.read(7)
-# print('Вот, что было в файле', end=': ')
-# print(text)
-#
-# fo.close()
-
-# fo = open('info.txt', 'wt', encoding='utf-8')
-#
-# print(fo.mode)
-# print(fo.name)
-# print(fo.encoding)
-#
-# count = fo.write('Этот текст будет в файле!')
-# print('В файл записано', count, 'байт!')
-#
-# fo.close()

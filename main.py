@@ -6,11 +6,37 @@
 # a - append - запись в коннец файла
 # r - read - чтение
 # print(*args, sep=' ', end='\n', file=None, flush=False)
+# Файлы и OS-модуль
 
-# Открытие с менеджером контеста
-with open('info.txt', 'rt', encoding='utf-8') as fo:
-    text = fo.read()
-    lst = text.splitlines()
-    print(lst)
-   # Прроследит, чтобы файл закрылся
+import os
+
+# os.mkdir('libs')
+
+# "Мягкое" создание директории (вместо mkdir)
+# os.makedirs('libs', exist_ok=True)
+
+print(os.path.exists('libs')) # проверка существования пути
+
+path = os.getcwd()
+os.chdir(path + '/images')
+
+all_files = [f for f in os.listdir('.') if f.endswith('.jpg')]
+print(all_files)
+
+all_files = [f for f in os.listdir('.') if f.startswith('K')]
+os.chdir('..')
+print(all_files)
+
+# if os.path.exists('libs'):
+#     os.rmdir('libs') # удаление директории
+
+# path = os.getcwd() # get current working directory
+# print(path)
+#
+# os.chdir(path + '/images')
+# print(os.getcwd())
+#
+# os.chdir('..')
+# os.chdir(path + '/fonts')
+# print(path)
 

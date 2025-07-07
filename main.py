@@ -3,12 +3,40 @@
 # Excel (openpyxl)  pip install openpyxl
 # pip freeze > requirements.txt
 
-# Пустой Exel-файл
-from openpyxl import Workbook
+# Запись данных в существующий файл
+from openpyxl import load_workbook
 
-wb = Workbook() # wb - Workbook
+# открывавем рабочую книгу
+wb = load_workbook('docs/report.xlsx')
 
+# Активный лист
 ws = wb.active
-ws.title = 'Отчет'
+# можно по имени
+# ws = wb['Отчет']
 
-wb.save('docs/report.xlsx')
+# Заголовки
+ws['A1'] = 'ФИО'
+ws['B1'] = 'Должность'
+ws['C1'] = 'Отдел'
+
+# Данные
+employees = [
+    ['Иванов И.И.', 'Менеджер', 'Продажи'],
+    ['Петров П.П.', 'Бухгалтер', 'Финансы'],
+    ['Сидорова С.С.', 'Аналитек', 'IT'],
+]
+
+for row, data in enumerate(employees, start=2):
+    ws.cell(row=row, column=1, value=data[0])
+    ws.cell(row=row, column=2, value=data[1])
+    ws.cell(row=row, column=3, value=data[2])
+
+wb.save('docs/employees.xlsx')
+
+
+# способы записи
+# ws['F1'] = 'Привет мир'
+# ws.cell(row=1, column=3, value='Hello')
+
+# wb.save('docs/newtable.xlsx')
+

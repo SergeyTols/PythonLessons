@@ -1,19 +1,19 @@
-# Ctrl + Alt + o - убрать лишний импорт
-# Документы (электронные таблицы)
-# Excel (openpyxl)  pip install openpyxl
-# pip freeze > requirements.txt
-from turtledemo.penrose import start
+# Пишем и подключаем свои модули
+# from . lib import summ - из текущей директории
+# from .. lib import summ - из уровня выше
+# from .lib import summ - относительно текущего файла
 
-# Чтение данных
-from openpyxl import load_workbook
+# import lib
+from lib import diff
 
-wb = load_workbook('docs/employees.xlsx')
-ws = wb.active
+if __name__ == '__main__':
+    print(diff(7, 3))
 
-rows_count = ws.max_row # Число заполненных строк
 
-for row in ws.iter_rows(values_only=True):
-    fio, pos, dept = row
-    print(f'Фамилия: {fio}, Должность: {pos}, Отдел: {dept}')
+def main():
+    print(diff(7, 3))
 
-# ws['A1'] = "=SUM(A1:A10)"
+# print(__name__)
+
+if __name__ == '__main__':
+    main()

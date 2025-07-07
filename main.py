@@ -1,17 +1,15 @@
-from PIL import Image, ImageDraw, ImageFont
+# Ctrl + Alt + o - убрать лишний импорт
 
-image = Image.new('RGB', (600, 400), (0, 0, 255))
-draw = ImageDraw.Draw(image)
+from PIL import Image
 
-not_my_font = ImageFont.truetype(font='Fonts/Robloxian-UltraBold.ttf')
+orig = Image.open('images/deep_blue.jpg').convert('RGB')
 
-draw.circle((600, 0), radius=150, fill='yellow')
+up = orig.crop((0, 0, 600, 200))
+down = orig.crop((0, 200, 600, 400))
 
-draw.text((100, 180), text="Это солнечный день", fill='yellow',
-          font=ImageFont.truetype("Gabriola.ttf", 60))
-draw.text((500, 380), text="Made by Sarge", fill='white',
-          font=not_my_font,
-          font_size=20)
-# image.save('images/deep_blue.jpg')
+new = Image.new('RGB',(600, 400))
+new.paste(down,(0, 0))
+new.paste(up,(0, 200))
 
-image.show()
+new.show()
+

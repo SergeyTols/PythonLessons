@@ -11,9 +11,9 @@ from lib import diff
 # from package1 import *  # Для __all__
 # import package1
 
-from package1 import greet, add
+from package1 import greet, add, __author__
 
 print(greet('Мир!'))
 print(add(3, 7))
-
+print(__author__)
 # print(package1.module._hidden_function())

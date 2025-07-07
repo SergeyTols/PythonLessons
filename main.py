@@ -12,4 +12,6 @@ draw.text((100, 180), text="Это солнечный день", fill='yellow',
 draw.text((500, 380), text="Made by Sarge", fill='white',
           font=not_my_font,
           font_size=20)
-image.save('images/deep_blue.jpg')
+# image.save('images/deep_blue.jpg')
+
+image.show()

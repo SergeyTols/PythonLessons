@@ -9,8 +9,8 @@
 
 fo = open('info.txt', 'at', encoding='utf-8')
 
-fo.write(' Хороший текст')
-# print('А вот это будет уже с новой строки')
+# fo.write(' Хороший текст')
+print('\nА вот ещё одна строка.', file=fo)
 
 fo.close()
 

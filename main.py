@@ -1,19 +1,18 @@
-# Пишем и подключаем свои модули
-# from . lib import summ - из текущей директории
-# from .. lib import summ - из уровня выше
-# from .lib import summ - относительно текущего файла
+# Файлы - набор данных в виде определенной структуры, сохраненный на носителе с присвоенным именем и, возможно, расширением
+# name.txt
+# t - текстовый файл (txt, html, xml)
+# b - бинарные файлы (jpg, avi, mp3)
+# w - write - файл открывается на запись(перезаписывается), если его нет, то создается
+# a - append - запись в коннец файла
+# r - read - чтение
 
-# import lib
-from lib import diff
+fo = open('info.txt', 'wt', encoding='utf-8')
 
-# from package1.module import  greet
+print(fo.mode)
+print(fo.name)
+print(fo.encoding)
 
-# from package1 import *  # Для __all__
-# import package1
+count = fo.write('Этот текст будет в файле!')
+print('В файл записано', count, 'байт!')
 
-from package1 import greet, add, __author__
-
-print(greet('Мир!'))
-print(add(3, 7))
-print(__author__)
-# print(package1.module._hidden_function())
+fo.close()

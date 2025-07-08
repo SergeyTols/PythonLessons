@@ -1,17 +1,23 @@
 # Исключения (runtime)
 # try:
 #   <что пытаемся сделать>
-#except:
+# except:
 #   <брабатываем исключения>
-#else:
+# else:
 #   <если исключений не было>
 # finally:
 #   <выполняется в любом случае>
 
-#   Утверждения (assertions) - в основном для нужд тестирования
+lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-try:
-    text = input('Введите текст: ')
-    assert len(text) > 3    # это утверждение
-except AssertionError:
-    print('Слишком короткий текст')
+loop = True
+while loop:
+    try:
+        index = int(input('Введите индекс: '))
+        if not index < len(lst):
+            raise ValueError('Введенный индекс вне диапазона')
+        print(f'Число по индексу {index}: {lst[index]}')
+    except ValueError as exp:
+        print('Надо быть внимательнее:', exp)
+    else:
+        loop = False

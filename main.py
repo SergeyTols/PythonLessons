@@ -1,11 +1,14 @@
-# Линтеры - контролирует следование хорошим практикам
-# Flake8
-# pip install flake8
-# (flake8-bugbear - для нахождения логических ошибок в коде)
-# (pep8-naming - проверяет имена на соответствие pep8)
-# pip install flake8-bugbear pep8-naming
-#
-# External Tools
-# Arguments: --max-complexity 10 $FileDir$/$FileName$
-# Working directory: $FileDir$
-# Advanced Options/Output filters: $FILE_PATH$:$LINES$
+# Регулярные выражение (поиск по паттерну)
+# alice.yandex.ru
+# Regular Expressions (re)
+# r-строка - raw-string ("сырая" строка)
+
+import re
+
+pattern = r'\b\w{4}\b'
+test_string = '10 плюс 20, будет 30'
+
+result = re.search(pattern, test_string)
+result1 = re.findall(pattern, test_string)
+print(result)
+print(result1)

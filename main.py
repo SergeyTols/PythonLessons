@@ -8,15 +8,10 @@
 # finally:
 #   <выполняется в любом случае>
 
-#   "Бросаемся" исключениями - raise
-
-max_val = 10
-min_val = 1
+#   Утверждения (assertions) - в основном для нужд тестирования
 
 try:
-    val = int(input(f'Введите целое число от {min_val} до {max_val}: '))
-    if not min_val < val < max_val:
-        raise ValueError('Введенное число вне диапазона')
-    print(f'Введенное число {val} лежит в заданном диапазоне')
-except ValueError as exp:
-    print('Надо быть внимательнее:', exp)
+    text = input('Введите текст: ')
+    assert len(text) > 3    # это утверждение
+except AssertionError:
+    print('Слишком короткий текст')

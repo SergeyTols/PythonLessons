@@ -1,13 +1,28 @@
-# name.txt
-# t - текстовый файл (txt, html, xml)
-# b - бинарные файлы (jpg, avi, mp3)
-# w - write - файл открывается на запись(перезаписывается), если его нет, то создается
-# a - append - запись в коннец файла
-# r - read - чтение
-# print(*args, sep=' ', end='\n', file=None, flush=False)
-# Файлы и OS-модуль
+# Исключения (runtime)
+# try:
+#   <что пытаемся сделать>
+#except:
+#   <брабатываем исключения>
+#else:
+#   <если исключений не было>
+# finally:
+#   <выполняется в любом случае>
 
-from path_lib import *
-
-print(img_dir)
-
+flag = False # открывался ли на запись
+try:
+    fo = open('information.txt', encoding='utf-8')
+except FileNotFoundError:
+    fo = open('information.txt', 'wt', encoding='utf-8')
+    flag = True
+    print('Файл не обнаружен и создан с параметрами по умолчанию')
+    # with open('information.txt', 'w', encoding='utf-8') as fo:
+    #     fo.write('По умолчанию')
+else:
+    print('Файл открыт успешною Читаем его и закрываем.')
+    print(fo.read())
+    fo.close()
+finally:
+    if flag:
+        fo.write('По умолчанию')
+        fo.close()
+    print('Продолжаем работать')

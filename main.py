@@ -16,7 +16,7 @@ while True:
     except ZeroDivisionError:
         print('На ноль делить нельзя!')
     except ValueError:
-        print('ужно вводить числа...')
+        print('Нужно вводить числа...')
         print(f'А введено {a} и {b} :(')
     else:
         print(result)

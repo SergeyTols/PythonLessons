@@ -1,4 +1,3 @@
-# Файлы - набор данных в виде определенной структуры, сохраненный на носителе с присвоенным именем и, возможно, расширением
 # name.txt
 # t - текстовый файл (txt, html, xml)
 # b - бинарные файлы (jpg, avi, mp3)
@@ -8,35 +7,22 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # Файлы и OS-модуль
 
-import os
+fo = open('info.txt', 'wt', encoding='utf-8')
 
-# os.mkdir('libs')
+fo.write('4, 2, 4, 6, 3, 5, 9, 7')
+fo.write('\n5, 1, 8, 2, 6, 8, 1, 2')
 
-# "Мягкое" создание директории (вместо mkdir)
-# os.makedirs('libs', exist_ok=True)
+fo.close()
 
-print(os.path.exists('libs')) # проверка существования пути
 
-path = os.getcwd()
-os.chdir(path + '/images')
+res = []
 
-all_files = [f for f in os.listdir('.') if f.endswith('.jpg')]
-print(all_files)
+with open('info.txt', encoding='utf-8') as f:
+    while temp := f.readline():
+        res += temp.split(', ')
 
-all_files = [f for f in os.listdir('.') if f.startswith('K')]
-os.chdir('..')
-print(all_files)
+res = list(map(lambda x: x.rstrip('\n'), res))
+res = set(res)
+res = sorted(int(x) for x in res)
 
-# if os.path.exists('libs'):
-#     os.rmdir('libs') # удаление директории
-
-# path = os.getcwd() # get current working directory
-# print(path)
-#
-# os.chdir(path + '/images')
-# print(os.getcwd())
-#
-# os.chdir('..')
-# os.chdir(path + '/fonts')
-# print(path)
-
+print(res)

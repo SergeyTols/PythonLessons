@@ -8,18 +8,15 @@
 # finally:
 #   <выполняется в любом случае>
 
-print('Остаток от деления: ')
-loop = True
-while loop:
-    try:
-        value = int(input('На что делим число 10:'))
-        res = 10 % value
-        print(f'Остаток от деления 10 на {value} = {res}')
-    except ZeroDivisionError:
-        print('На ноль делить нельзя!')
-    except ValueError:
-        print('Надо вводить только целые числа')
-    except Exception as exp:
-        print('Произошло исключение: ', exp.__class__.__name__, exp)
-    else:
-        loop = False
+#   "Бросаемся" исключениями - raise
+
+max_val = 10
+min_val = 1
+
+try:
+    val = int(input(f'Введите целое число от {min_val} до {max_val}: '))
+    if not min_val < val < max_val:
+        raise ValueError('Введенное число вне диапазона')
+    print(f'Введенное число {val} лежит в заданном диапазоне')
+except ValueError as exp:
+    print('Надо быть внимательнее:', exp)

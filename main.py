@@ -7,22 +7,7 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # Файлы и OS-модуль
 
-import pickle
-import pprint
+from path_lib import *
 
-d = {
-    'стол': 'table',
-    'стул': 'chair',
-}
+print(img_dir)
 
-# сериализация
-with open('dictfile.dat', 'wb') as p:
-    # d - что сериализуем
-    # p - куда сериализуем
-    pickle.dump(d, p)
-
-# десериализация
-with open('dictfile.dat', 'rb') as p:
-    d = pickle.load(p)
-
-pprint.pprint(d, width=15)

@@ -7,20 +7,22 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # Файлы и OS-модуль
 
-# fo = open('info.txt', 'wt', encoding='utf-8')
-#
-# fo.write('4, 2, 4, 6, 3, 5, 9, 7')
-# fo.write('\n5, 1, 8, 2, 6, 8, 1, 2')
-#
-# fo.close()
+import pickle
+import pprint
 
+d = {
+    'стол': 'table',
+    'стул': 'chair',
+}
 
-res = []
+# сериализация
+with open('dictfile.dat', 'wb') as p:
+    # d - что сериализуем
+    # p - куда сериализуем
+    pickle.dump(d, p)
 
-with open('info.txt', encoding='utf-8') as f:
-    while temp := f.readline().rstrip('\n'):
-        res += temp.split(', ')
+# десериализация
+with open('dictfile.dat', 'rb') as p:
+    d = pickle.load(p)
 
-res = sorted(int(x) for x in set(res))
-
-print(res)
+pprint.pprint(d, width=15)

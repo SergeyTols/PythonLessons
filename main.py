@@ -7,16 +7,11 @@
 # a = 3
 # print(a.__class__.__name__)
 
-# Методы классов
+# Методы классов и анализ предыдущих вызовов
 # self - контекстный объект, который ссылается на объект, который "вызывает" класс
-class Greater:
-    def hello(self, name='Noname') -> None:
-        print('Привет,', name)
 
-    def goodbye(self):
-        print('Пока, мир!!!')
+from lib import Car
 
-
-g = Greater()
-g.hello('Оленёк')
-g.goodbye()
+g = Car('Skoda', 'Octavia')
+g.start_engine()
+g.drive_to('город')

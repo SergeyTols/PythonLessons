@@ -16,18 +16,40 @@ class Car:
     counter = 0  # Сеатичное свойство (счетчик машин)
 
     def __init__(self, brand='Noname', model='Nomodel', color='black'):
-        self.brand = brand  # 'Skoda'
-        self.model = model  # 'Octavia'
-        self.color = color  # 'red'
+        self._brand = brand  # 'Skoda'
+        self._model = model  # 'Octavia'
+        self._color = color  # 'red'
         self.engine_on = False
         Car.counter += 1
+
+    def set_brand(self, new_brand):
+        if new_brand:
+            self._brand = new_brand
+
+    def set_model(self, new_model):
+        if new_model:
+            self._model = new_model
+
+    def set_color(self, new_color):
+        if new_color:
+            self._color = new_color
+
+    def get_brand(self):
+        return self._brand
+
+    def get_model(self):
+        return self._model
+
+    def get_color(self):
+        return self._color
+
 
     def start_engine(self) -> None:
         self.engine_on = True
 
     def drive_to(self, place):
         if self.engine_on:
-            print(f'Едем в {place} на {self.brand} {self.model}')
+            print(f'Едем в {place} на {self._brand} {self._model}')
         else:
             print('Двигатель не заведен, не едем')
 
@@ -62,3 +84,35 @@ class Person:
 
     def person_info(self):
         print(f'Человек с именем {self._name}, возраст - {self._age}')
+
+
+class Clicker:
+    def __init__(self):
+        self._counter = 0
+
+    def click(self):
+        self._counter += 1
+
+    def get_counter(self):
+        return self._counter
+
+    def reset(self):
+        self._counter = 0
+
+
+class Separator:
+    def __init__(self):
+        self._odd = []
+        self._even = []
+
+    def add_num(self, num):
+        if num % 2:
+            self._even.append(num)
+        else:
+            self._odd.append(num)
+
+    def get_even(self):
+        return self._even
+
+    def get_odd(self):
+        return self._odd

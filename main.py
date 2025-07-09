@@ -9,10 +9,12 @@
 
 
 # Cтатичные члены класса
-from lib import Car
+from lib import Separator
 
 
-car1 = Car()
-car2 = Car()
-car3 = Car()
-print(Car.get_counter())
+s = Separator()
+
+for i in range(20):
+    s.add_num(i)
+
+print(s.get_odd())

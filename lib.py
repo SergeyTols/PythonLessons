@@ -126,3 +126,18 @@ class Sorter:
 
     def result(self):
         return sorted(self._words, key=lambda x: len(x), reverse=True)
+
+
+class Balance:
+    def __init__(self):
+        self.right = 0
+        self.left = 0
+
+    def add_left(self, weight):
+        pass
+
+    def add_left(self, weight):
+        pass
+
+    def result(self) -> str:
+        return  # состояние весов

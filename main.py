@@ -9,14 +9,9 @@
 
 
 # Cтатичные члены класса
-from lib import Sorter
+from lib import Balance
 
 
-s = Sorter()
 
-s.add_word('Привет')
-s.add_word('Прива')
-s.add_word('Хай')
-s.add_word('Здорова')
 
-print(s.result())
+print(b.result())

@@ -21,18 +21,19 @@ import re
 # pattern = '[^ерм]' # исключить символы
 # pattern = r'\((.+?)\)' # вытащить текст из скобок
 # pattern = 'o{2,5}'
-pattern = 'Go{3,}gle'
+# pattern = 'Go{3,}gle'
+# pattern = r'стеклянн?ый' # Вторая "н" может присутствовать, не обязательно
 
-# test_string = '10 плюс 20, будет 300'
-# test_string = 'Главное - начало!'
-# test_string = 'Время - 07:55'
-# test_string = 'Поиск по образцу (pattern)'
-test_string = 'Google, Gooogle, Goooooooogle'
+# "жадный" квантификатор (greedy quantifier)
+# pattern = r'<img.*>' # самый "жадный" квантификатор
+# pattern = r'<img.*?>' # ленивый (lazy, non-greedy) квантификатор
+# pattern = r'<img[^>]+src="([^">]+)"' # только путь к картинке
+# pattern = '<p>(.*?)</p>' # Cодержимое абзаца html
+# test_string = '<b>Вот начало:</b><p>Содержимое</p><i>и т.д.</i>'
+pattern = r'<p[^>]*>(.*?)</p>' # Cодержимое абзаца html (с атрибутами)
+test_string = '<b>Центрируем содержимое абзаца</b><p align ="center">Содержимое</p>'
 
-
-# result = re.search(pattern, test_string)
 result1 = re.findall(pattern, test_string)
-# print(result)
+
 print(result1)
 
-# print('Цифры есть') if result else print('Цифр нет') # Ternary if (тернарный условный оператор)

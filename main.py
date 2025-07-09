@@ -13,16 +13,14 @@
 # https://regex101.com
 
 import re
+import requests
 
-pattern = r'[,.:;!]'
-test_string = 'яблоко,  груша.   банан   ;  слива !    абрикос  '
-# test_string = ''.join(test_string.split()) # убрали все пробелы
+pattern = r'<img[^>]+src="([^">]+)"'
 
-result1 = re.split(pattern, test_string)
-# через map
-# result1 = list(map(lambda x: x.strip(), result1))
+# test_string = '<img height="50" width="150" src="images/bg.jpg">' # Сначала проверим
 
-# через list comprehension с сортировкой
-result1 = sorted(x.strip() for x in result1)
+html = requests.get('https://skillbox.ru').text
+result1 = re.findall(pattern, html)
+
 print(result1)
 

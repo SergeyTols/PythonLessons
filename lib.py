@@ -43,7 +43,6 @@ class Car:
     def get_color(self):
         return self._color
 
-
     def start_engine(self) -> None:
         self.engine_on = True
 
@@ -116,3 +115,14 @@ class Separator:
 
     def get_odd(self):
         return self._odd
+
+
+class Sorter:
+    def __init__(self):
+        self._words = []
+
+    def add_word(self, word):
+        self._words.append(word)
+
+    def result(self):
+        return sorted(self._words, key=lambda x: len(x), reverse=True)

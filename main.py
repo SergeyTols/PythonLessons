@@ -9,12 +9,14 @@
 
 
 # Cтатичные члены класса
-from lib import Separator
+from lib import Sorter
 
 
-s = Separator()
+s = Sorter()
 
-for i in range(20):
-    s.add_num(i)
+s.add_word('Привет')
+s.add_word('Прива')
+s.add_word('Хай')
+s.add_word('Здорова')
 
-print(s.get_odd())
+print(s.result())

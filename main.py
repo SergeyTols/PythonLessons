@@ -10,6 +10,8 @@
 # ? - от нуля до одного (аналог {0,1})
 # * - от нуля до бесконечности(32767) {0,}
 # + - от одного до бесконечности(32767) {1,}
+# https://regex101.com
+
 import re
 
 # pattern = r'\b\w{4}\b' # все слова из 4 символов
@@ -30,10 +32,19 @@ import re
 # pattern = r'<img[^>]+src="([^">]+)"' # только путь к картинке
 # pattern = '<p>(.*?)</p>' # Cодержимое абзаца html
 # test_string = '<b>Вот начало:</b><p>Содержимое</p><i>и т.д.</i>'
-pattern = r'<p[^>]*>(.*?)</p>' # Cодержимое абзаца html (с атрибутами)
-test_string = '<b>Центрируем содержимое абзаца</b><p align ="center">Содержимое</p>'
+# pattern = r'<p[^>]*>(.*?)</p>' # Cодержимое абзаца html (с атрибутами)
+def remove_punctuation(input_str: str) -> str:
+    """
+    Методом sub() заменяем все найденные совпадения пустой строки
+    и возвращаем "очищенную"
+    :param input_str: строка со знаками препинания
+    :return: строку, очищенную от зн. преп.
+    """
+    return re.sub(r'[^\w\s]', '', input_str)
 
-result1 = re.findall(pattern, test_string)
+test_string = 'Язык Python, являясь интуитивно понятным, прост для изучения! Ну и PEP8'
+
+result1 = remove_punctuation(test_string)
 
 print(result1)
 

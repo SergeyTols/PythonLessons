@@ -14,37 +14,15 @@
 
 import re
 
-# pattern = r'\b\w{4}\b' # все слова из 4 символов
-# pattern = r'\d' # все цифры от 0 до 9
-# pattern = r'\d{3}' # три цифры подряд
-# pattern = r'начало!\Z' # на что заканчивается
-# pattern = '[0-5][0-9]' # две, идущие подряд
-# pattern = '[а-яА-я]' # все буквы от "а" до "я" и от "А" до "Я"
-# pattern = '[^ерм]' # исключить символы
-# pattern = r'\((.+?)\)' # вытащить текст из скобок
-# pattern = 'o{2,5}'
-# pattern = 'Go{3,}gle'
-# pattern = r'стеклянн?ый' # Вторая "н" может присутствовать, не обязательно
+pattern = r'[,.:;!]'
+test_string = 'яблоко,  груша.   банан   ;  слива !    абрикос  '
+# test_string = ''.join(test_string.split()) # убрали все пробелы
 
-# "жадный" квантификатор (greedy quantifier)
-# pattern = r'<img.*>' # самый "жадный" квантификатор
-# pattern = r'<img.*?>' # ленивый (lazy, non-greedy) квантификатор
-# pattern = r'<img[^>]+src="([^">]+)"' # только путь к картинке
-# pattern = '<p>(.*?)</p>' # Cодержимое абзаца html
-# test_string = '<b>Вот начало:</b><p>Содержимое</p><i>и т.д.</i>'
-# pattern = r'<p[^>]*>(.*?)</p>' # Cодержимое абзаца html (с атрибутами)
-def remove_punctuation(input_str: str) -> str:
-    """
-    Методом sub() заменяем все найденные совпадения пустой строки
-    и возвращаем "очищенную"
-    :param input_str: строка со знаками препинания
-    :return: строку, очищенную от зн. преп.
-    """
-    return re.sub(r'[^\w\s]', '', input_str)
+result1 = re.split(pattern, test_string)
+# через map
+# result1 = list(map(lambda x: x.strip(), result1))
 
-test_string = 'Язык Python, являясь интуитивно понятным, прост для изучения! Ну и PEP8'
-
-result1 = remove_punctuation(test_string)
-
+# через list comprehension с сортировкой
+result1 = sorted(x.strip() for x in result1)
 print(result1)
 

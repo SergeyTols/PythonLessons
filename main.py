@@ -7,9 +7,12 @@
 # Методы классов и анализ предыдущих вызовов
 # self - контекстный объект, который ссылается на объект, который "вызывает" класс
 
-from lib import Person
+
+# Cтатичные члены класса
+from lib import Car
 
 
-p = Person()
-p.person_info()
-print(p.get_age())
+car1 = Car()
+car2 = Car()
+car3 = Car()
+print(Car.get_counter())

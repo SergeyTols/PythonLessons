@@ -5,17 +5,22 @@ def summ(a, b):
 def diff(a, b):
     return a - b
 
+
 if __name__ == '__main__':
     print('Это библиотека, а исполняемый: main.py')
+
 
 # print(__name__)
 
 class Car:
+    counter = 0  # Сеатичное свойство (счетчик машин)
+
     def __init__(self, brand='Noname', model='Nomodel', color='black'):
-        self.brand = brand # 'Skoda'
-        self.model = model # 'Octavia'
-        self.color = color # 'red'
+        self.brand = brand  # 'Skoda'
+        self.model = model  # 'Octavia'
+        self.color = color  # 'red'
         self.engine_on = False
+        Car.counter += 1
 
     def start_engine(self) -> None:
         self.engine_on = True
@@ -25,6 +30,10 @@ class Car:
             print(f'Едем в {place} на {self.brand} {self.model}')
         else:
             print('Двигатель не заведен, не едем')
+
+    @staticmethod
+    def get_counter():
+        return Car.counter
 
 
 class Person:
@@ -53,5 +62,3 @@ class Person:
 
     def person_info(self):
         print(f'Человек с именем {self._name}, возраст - {self._age}')
-
-23222

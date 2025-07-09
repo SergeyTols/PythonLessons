@@ -7,20 +7,16 @@
 # a = 3
 # print(a.__class__.__name__)
 
-# Свойства классов
-class Fruit:
-    pass
+# Методы классов
+# self - контекстный объект, который ссылается на объект, который "вызывает" класс
+class Greater:
+    def hello(self, name='Noname') -> None:
+        print('Привет,', name)
+
+    def goodbye(self):
+        print('Пока, мир!!!')
 
 
-a = Fruit()
-b = Fruit()
-c = Fruit()
-
-a.name = 'Яблоко'
-a.weight = 120
-
-b.name = 'Груша'
-b.weight = 150
-
-print(b.name)
-print(a.weight)
+g = Greater()
+g.hello('Оленёк')
+g.goodbye()

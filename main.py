@@ -4,14 +4,12 @@
 # Атрибут - свойства и методы объекта
 # Метод - действие объекта
 #
-# a = 3
-# print(a.__class__.__name__)
-
 # Методы классов и анализ предыдущих вызовов
 # self - контекстный объект, который ссылается на объект, который "вызывает" класс
 
-from lib import Car
+from lib import Person
 
-g = Car('Skoda', 'Octavia')
-g.start_engine()
-g.drive_to('город')
+
+p = Person()
+p.person_info()
+print(p.get_age())

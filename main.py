@@ -1,26 +1,26 @@
-# Регулярные выражение (поиск по паттерну)
-# alice.yandex.ru
-# Regular Expressions (re)
-# r-строка - raw-string ("сырая" строка)
-# Квантификаторы (quantity)
-# {m} - ровно m раз
-# {m,} - m раз и более
-# {,n} - не более n раз
-# {m,n} - от m до n (без пробелов)
-# ? - от нуля до одного (аналог {0,1})
-# * - от нуля до бесконечности(32767) {0,}
-# + - от одного до бесконечности(32767) {1,}
-# https://regex101.com
+# ООП(объектно ориентированное программирование) (encapsulation)
+# Класс - прототип будущего объекта, который имеет свойства и миетоды по работе.
+# Экземпляр - объект, пораждённый классом
+# Атрибут - свойства и методы объекта
+# Метод - действие объекта
+#
+# a = 3
+# print(a.__class__.__name__)
 
-import re
-import requests
+# Свойства классов
+class Fruit:
+    pass
 
-pattern = r'<img[^>]+src="([^">]+)"'
 
-# test_string = '<img height="50" width="150" src="images/bg.jpg">' # Сначала проверим
+a = Fruit()
+b = Fruit()
+c = Fruit()
 
-html = requests.get('https://skillbox.ru').text
-result1 = re.findall(pattern, html)
+a.name = 'Яблоко'
+a.weight = 120
 
-print(result1)
+b.name = 'Груша'
+b.weight = 150
 
+print(b.name)
+print(a.weight)

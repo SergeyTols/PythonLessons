@@ -24,17 +24,16 @@ class Point:
         return Point(abs(self.x - other.x), abs(self.y - other.y))
 
     def __add__(self, other):
-        # hypot = (abs(self.x - other.x), abs(self.y - other.y))
-        # abs(self.x - other.x), abs(self.y - other.y)
+
         return hypot((self.x - other.x), (self.y - other.y))
 
 
-# a = round(hypot(5, 2))
+a = hypot(5, 2)
 p = Point(5, 4)
 po = Point(10, 2)
 
 
-print(p - po)
-
+print(p + po)
+print(a)
 
 

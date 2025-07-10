@@ -6,34 +6,25 @@
 #
 #
 #
-from math import hypot
-
-class Point:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-
-    def __str__(self):
-        return f'<Point: ({self.x}, {self.y})>'
-
-    def __repr__(self):
-        return f'<List of Point: ({self.x}, {self.y})>'
-
-    def __sub__(self, other):
-        # return Point(self.x - other.x, self.y - other.y)
-        return Point(abs(self.x - other.x), abs(self.y - other.y))
+class MyTime:
+    def __init__(self, minutes, seconds):
+        if 0 <= minutes < 60:
+            self.minutes = minutes
+        if 0 <= seconds < 60:
+            self.seconds = seconds
 
     def __add__(self, other):
+        m = self.minutes + other.minutes
+        s = self.seconds + other.seconds
+        m += s // 60
+        s = s % 60
+        m = m % 60
+        return MyTime(m, s)
 
-        return hypot((self.x - other.x), (self.y - other.y))
-
-
-a = hypot(5, 2)
-p = Point(5, 4)
-po = Point(10, 2)
-
-
-print(p + po)
-print(a)
+    def __str__(self):
+        return f'<Time {self.minutes:02}:{self.seconds:02}>'
 
 
+t1 = MyTime(13, 15)
+t2 = MyTime(53, 25)
+print(t1 + t2)

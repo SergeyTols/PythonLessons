@@ -118,32 +118,79 @@ class Car:
         return Car.counter
 
 
-class Person:
-    def __init__(self, name='Sergey', age=1):
-        # свойства (поля) класса
-        self._name = name
-        self._age = age
+# class Person:
+#     def __init__(self, name='Sergey', age=1):
+#         # свойства (поля) класса
+#         self._name = name
+#         self._age = age
+#
+#     # Setter
+#     def set_name(self, new_name):
+#         if new_name:
+#             self._name = new_name
+#
+#     def set_age(self, new_age):
+#         if 0 < new_age < 150:
+#             self._age = new_age
+#         else:
+#             print('Некоректный возраст — ', new_age)
+#
+#     # Getters
+#     def get_name(self):
+#         return self._name
+#
+#     def get_age(self):
+#         return self._age
+#
+#     def person_info(self):
+#         print(f'Человек с именем {self._name}, возраст - {self._age}')
+#
+#
+# class Student:
+#     def __init__(self, name='Sergey', univ=''):
+#         # свойства (поля) класса
+#         self._name = name
+#         self._univ = univ
+#
+#     # Setter
+#     def set_name(self, new_name):
+#         if new_name:
+#             self._name = new_name
+#
+#     def set_univ(self, new_univ):
+#         if new_univ:
+#             self._univ = new_univ
+#
+#     def get_name(self):
+#         return self._name
+#
+#     def get_univercity(self):
+#         return self._univ
+#
+#
+# class Employee:
+#     def __init__(self, name='Sergey', comp=''):
+#         # свойства (поля) класса
+#         self._name = name
+#         self._company = comp
+#
+#     # Setter
+#     def set_name(self, new_name):
+#         if new_name:
+#             self._name = new_name
+#
+#     def set_comp(self, new_company):
+#         if new_company:
+#             self._company = new_company
+#
+#
+#     # Getters
+#     def get_name(self):
+#         return self._name
+#
+#     def get_company(self):
+#         return self._company
 
-    # Setter
-    def set_name(self, new_name):
-        if new_name:
-            self._name = new_name
-
-    def set_age(self, new_age):
-        if 0 < new_age < 150:
-            self._age = new_age
-        else:
-            print('Некоректный возраст — ', new_age)
-
-    # Getters
-    def get_name(self):
-        return self._name
-
-    def get_age(self):
-        return self._age
-
-    def person_info(self):
-        print(f'Человек с именем {self._name}, возраст - {self._age}')
 
 
 class Clicker:

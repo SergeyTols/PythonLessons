@@ -24,8 +24,8 @@ class BankAccount:
         else:
             print(f'Не достаточно средств')
 
-client1 = BankAccount
-client1.deposit(500)
+client1 = BankAccount('Дима')
+client1.deposit(800)
 client1.withdraw(600)
 print('Остаток:', client1.get_balance())
 

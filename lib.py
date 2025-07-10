@@ -1,3 +1,64 @@
+from math import pi
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+        self.name = 'круг'
+
+    def perimetr(self):
+        return 2 * pi * self.radius
+
+    def area(self):
+        return pi * self.radius ** 2
+
+    def get_name(self):
+        return self.name
+
+
+class Square:
+    def __init__(self, side):
+        self.side = side
+        self.name = 'квадрат'
+
+    def perimetr(self):
+        return 4 * self.side
+
+    def area(self):
+        return self.side ** 2
+
+    def get_name(self):
+        return self.name
+
+
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.name = 'прямоугольник'
+
+    def perimetr(self):
+        return 2 * (self.width + self.height)
+
+    def area(self):
+        return self.width * self.height
+
+    def get_name(self):
+        return self.name
+
+
+# Book('Язык С++','Бьярн Страупструп')
+class Book:
+    def __init__(self, title, author):
+        self._title = title
+        self._author = author
+
+    def get_title(self):
+        return self._title
+
+    def get_author(self):
+        return self._author
+
+
 def summ(a, b):
     return a + b
 

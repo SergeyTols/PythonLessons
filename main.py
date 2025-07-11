@@ -1,31 +1,44 @@
 # Duck type - утиная типизация (прочитать)
 # Шпоргалка по всем методам в пайтон
 #
+# Сеть интернет - сеть сетей
+#
+# Протокол - совокупность правил, регламентирующая ф-ции управления
+#            передачи данных между компонентами компьютерной сети.
+#
+# TCP/IP
+# TCP - Transmission Control Protocol - протокол управления передачей,
+#       управляет потоком по маршрутам, обрабатывает маршруты, гарантирует
+#       целостность доставки пакетов.
+# IP - Internet Protocol - разбивает информацию на
+#      пакеты (ip - дейтаграммы), определяет направления (маршруты),
+#      обрабатывает поступления.
+#
+# HTTP(S) - Hyper Text Transfer Protokol (Secured) - протокол передачи
+#           гипертекста (S - с механизмами шифрования).
+# FTP - File Transfer Protokol
+# SMTP - Simple Mail Transfer Protocol
+#
+# Хост - компьютер, являющийся частью сети, с которого другие компьютеры
+#        запрашивают информацию
+#
+# Хост-система
+# 1. Обязательная - IP-адрес: 195.34.32.11 - удобная для компа, не для человека
+# 2. Необязательная - DNS (Domain Name System): https://www.yandex.spb.ru/ -
+#    удобна для человека
+#
+# ASCII
+# URL - Uniform Resource Locator
+#
+# Поиск/покупка/проверка доменных имен:
+# nic.ru
+# reg.ru
+# whois.ru
+#
+# http(s)://доменное имя.зона/страница1/?параметр1=значение1&параметр2=значение2 - get метод
+#
+#
+#
+#
 
-class BankAccount:
-    def __init__(self, owner, balance=0):
-        self._owner = owner
-        self._balance = balance
-
-    def get_balance(self):
-        return self._balance
-
-    def deposit(self, amount):
-        if amount > 0:
-            self._balance += amount
-            print(f'Депозит пополнен на сумму {amount}')
-        else:
-            print(f'Нельзя внести отрицательную сумму на депозит')
-
-    def withdraw(self, amount):
-        if 0 < amount <= self._balance:
-            self._balance -= amount
-            print(f'Снята сумма {amount}')
-        else:
-            print(f'Не достаточно средств')
-
-client1 = BankAccount
-client1.deposit(500)
-client1.withdraw(600)
-print('Остаток:', client1.get_balance())
 

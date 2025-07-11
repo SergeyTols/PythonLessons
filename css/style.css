@@ -1,0 +1,25 @@
+ h2{
+   color: green;
+ }
+
+
+
+ p{
+    color: RGB(255,0,0,0.5);
+ }
+
+.green {
+    color: green;
+}
+
+#yellow {
+color: yellow
+}
+
+#blue {
+color: blue
+}
+
+ul>li {
+    color: yellow;
+}

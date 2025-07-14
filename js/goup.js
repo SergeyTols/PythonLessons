@@ -27,7 +27,7 @@ function goTop() {
     // пока не дошли до верха
     if (window.pageYOffset > 0) {
         // скролинг к верху
-        window.scrollBy(0, -500); // по Y на 28px
+        window.scrollBy(0, -1000); // по Y на 28px
         setTimeout(goTop, 0); // рекурсивный вызов самой себя через задержку
     }
 }

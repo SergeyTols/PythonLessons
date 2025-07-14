@@ -6,25 +6,16 @@ import json
 
 
 
-with open('dogs.json', 'rt') as d:
-    # data = json.load(d) # напрямую из файла
-    temp = d.read() # читаем как строку
-    data = json.loads(temp) # строковое представление JSON
+d = {
+    'ананас': 300,
+    'банан': 400,
+    'яблоко': 120,
+    'груша': 280,
+}
+# запись напрямую в файл
+# with open('fruits.json', 'wt', encoding='utf-8') as f:
+#     json.dump(d, f, indent=4)
 
-
-for i in range(len(data)):
-    print(f'Питомец № {i + 1}')
-    for k, v in data[i].items():
-        if type(v) == list:
-            print(f'\t{k}: {', '.join(v)}')
-        else:
-            print(f'\t{k}: {v}')
-# print(data)
-
-# for k, v in data.items():
-#     if type(v) == list:
-#         print(f'{k}: {', '.join(v)}')
-#     else:
-#         print(f'{k}: {v}')
-
-# print(json.dumps(data, indent=4))
+# вывод в виде строки
+data = json.dumps(d, indent=4)
+print(data)

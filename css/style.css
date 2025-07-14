@@ -23,3 +23,9 @@ color: blue
 ul>li {
     color: green;
 }
+
+#alive {
+    font-family: 'Arial';
+    font-size: 26pt;
+    text-align: center;
+}

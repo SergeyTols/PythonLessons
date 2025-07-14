@@ -22,3 +22,15 @@ function sayHello(name) {
 /* let name = prompt("Ваше имя: ");
 sayHello(name); // вызов функции  */
 
+function changeColor() {
+//     document.getElementById('alive').style.color = 'red';
+    const txt = document.getElementById('alive');
+    if(txt.style.display === 'none') {
+        txt.style.display = block;
+    } else {
+        txt.style.display = 'none';
+    }
+}
+
+//Подключаюсь к элементу в DOM
+const txt = document.getElementById('alive').onclick = changeColor

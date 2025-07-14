@@ -2,7 +2,6 @@
 
 import csv
 
-from urllib3.filepost import writer
 
 # with open('people.csv', 'r', encoding='utf-8') as f:
 #     dict_reader = csv.DictReader(f)

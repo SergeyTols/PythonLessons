@@ -1,25 +1,18 @@
-# Zip
+# JSON (Java Script object Notation)
+# Для чтения:
+# load() - читает из файла
+# loads() - читает строковое представление
+import json
 
-from zipfile import ZipFile
-import os
 
-# csv_files = [f for f in os.listdir() if f.endswith('.csv')]
-# # print(csv_files)
-# with ZipFile('archive.zip', 'w') as myzip:
-#     for file in csv_files:
-#         myzip.write(file)
-#         os.remove(file)
 
-# получить список
-with ZipFile('archive.zip', 'r') as zip_obj:
-    print(zip_obj.namelist())
+with open('dogs.json', 'rt') as d:
+    data = json.load(d)
 
-# распаковать определенный
-# files_to_extract = ['people.csv', 'file.csv']
-#
-# with ZipFile('archive.zip', 'r') as zip_obj:
-#     zip_obj.extractall(members=files_to_extract)
+for k, v in data.items():
+    if type(v) == list:
+        print(f'{k}: {', '.join(v)}')
+    else:
+        print(f'{k}: {v}')
 
-# распаковать все
-with ZipFile('archive.zip', 'r') as zip_obj:
-     zip_obj.extractall()
+# print(json.dumps(data, indent=4))

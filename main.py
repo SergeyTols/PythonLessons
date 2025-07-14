@@ -1,22 +1,19 @@
-# Периодические задачи
-#
-# pip install schedule
+# CSV-файлы
+import csv
+from os import write
 
-import schedule
-import datetime
+data = [
+    ['name', 'age', 'city'],
+    ['Борька', '25', 'Воронеж'],
+    ['Влад', '75', 'Тверь'],
+    ['Глеб', '35', 'Краснодар'],
+]
 
-i = 1
+with open('people.csv', 'r', encoding='utf-8') as f:
+    reader = csv.reader(f, delimiter=',', quotechar='"')
+    for row in reader:
+        print(row)
 
-
-def job():
-    global i
-    print(f'Скрипт запустится {i}-раз')
-    i += 1
-    t = datetime.datetime.now()
-    print('Время:', t.strftime('%H:%M:%S'))
-
-
-schedule.every(3).seconds.do(job)
-
-while True:
-    schedule.run_pending()
+with open('employee.csv', 'w', newline='', encoding='utf-8') as f:
+    writer = csv.writer(f)
+    writer.writerows(data)

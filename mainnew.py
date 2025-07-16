@@ -1,5 +1,10 @@
 # Введение во Flask
 # MVC - Model View Controller
+# GET - запрашивает данные (read)
+# POST - отправляет данные на сервер (submit)
+# PUT - принудительно заменяет все на сервере из контекста запроса
+# DELETE - удаляет указанные данные
+# PATCH - частичное изменение данных
 
 import sqlite3
 from fileinput import filename

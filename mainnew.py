@@ -1,8 +1,8 @@
 # Введение во Flask
 # MVC - Model View Controller
+
 import sqlite3
 from fileinput import filename
-
 from flask import Flask, url_for
 
 app = Flask(__name__)
@@ -69,8 +69,11 @@ def greeting(user, id_num):
     return f'Привет, {user} c id={id_num}'
 
 
+@app.route('/get-user/')
 @app.route('/get-user/<int:id_num>')
-def get_user(id_num):
+def get_user(id_num=None):
+    if id_num is None:
+        return 'Где номер записи?'
     con = sqlite3.connect('db/movies.sqlite')
     cur = con.cursor()
     query = f'SELECT name, city FROM users WHERE trip_id={id_num}'
@@ -79,7 +82,7 @@ def get_user(id_num):
     name, city = result
     cur.close()
     con.close()
-    return f'''<table border="1">
+    return f'''<table border="2">
     <tr>
     <td>ФИО</td>
     <td>Город</td>
@@ -88,8 +91,7 @@ def get_user(id_num):
     <td>{name}</td>
     <td>{city}</td>
     </tr>   
-    </table>
-'''
+    </table>'''
 
 
 if __name__ == '__main__':

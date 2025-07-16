@@ -68,7 +68,7 @@ def diff(a, b):
 
 
 if __name__ == '__main__':
-    print('Это библиотека, а исполняемый: main.py')
+    print('Это библиотека, а исполняемый: mainnew.py')
 
 
 # print(__name__)

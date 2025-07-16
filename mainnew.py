@@ -1,5 +1,6 @@
 # Введение во Flask
 # MVC - Model View Controller
+import sqlite3
 from fileinput import filename
 
 from flask import Flask, url_for
@@ -50,6 +51,34 @@ def sample_page():
 </body>
 </html>
     """
+
+
+@app.route('/sample-page2')
+def sample_page2():
+    with open('Temp.html', 'r', encoding='utf-8') as html:
+        return html.read()
+
+
+# <string> - по умолчанию
+# <int:number> - целое число
+# <float:number> - вещественные числа
+# <path:p> - может содержать слэши для указания пути
+# <uuid:id> - строка-идентификатор (16-байт в НЕХ-формате)
+@app.route('/greeting/<user>/<int:id_num>')
+def greeting(user, id_num):
+    return f'Привет, {user} c id={id_num}'
+
+
+@app.route('/get-user/<int:id_num>')
+def get_user(id_num):
+    con = sqlite3.connect('db/movies.sqlite')
+    cur = con.cursor()
+    query = f'SELECT name FROM users WHERE trip_id={id_num}'
+    response = cur.execute(query)
+    result = response.fetchone()
+    cur.close()
+    con.close()
+    return str(result[0])
 
 
 if __name__ == '__main__':

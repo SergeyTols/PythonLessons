@@ -82,7 +82,7 @@ def sample_page2():
 def greeting(user, id_num):
     return f'Привет, {user} c id={id_num}'
 
-
+# f'
 @app.route('/get-user/')
 @app.route('/get-user/<int:id_num>')
 def get_user(id_num=None):
@@ -143,9 +143,12 @@ def file_upload():
     return 'Ошибка загрузки!'
 
 
-@app.route('/numbers')
-def odd_even():
-    return render_template('numbers.html', title='Чёт-нечёт', number=2)
+# @app.route('/numbers/')
+# @app.route('/numbers/<int:number>')
+# def odd_even(number):
+#     if number is None:
+#         return render_template('numbers.html', title='Где число?', number='')
+#     return render_template('numbers.html', title='Чёт-нечёт', number=number)
 
 
 @app.route('/deals')

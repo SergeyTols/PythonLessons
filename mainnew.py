@@ -6,6 +6,9 @@
 # DELETE - удаляет указанные данные
 # PATCH - частичное изменение данных
 # JINJA - переменные, условия, циклы и т.д.
+# ORM - Object Relational Mapping
+
+# https://github.com/ipapMaster/Python_Web_2025/blob/Lesson17/templates/login.html
 
 # pip install flask-wtf
 # pip freeze > requirements.txt

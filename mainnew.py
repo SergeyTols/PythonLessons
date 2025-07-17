@@ -6,18 +6,28 @@
 # DELETE - удаляет указанные данные
 # PATCH - частичное изменение данных
 # JINJA - переменные, условия, циклы и т.д.
+
+# pip install flask-wtf
+# pip freeze > requirements.txt
+
 import os.path
 import sqlite3
+
+from openpyxl.styles.builtins import title
 from werkzeug.utils import secure_filename
 from flask import Flask, url_for, request, render_template
+from forms.loginform import LoginForm
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
+app.config['SECRET_KEY'] = 'just_secret_key'
 ALLOWED_EXTENSION = ['txt', 'pdf', 'zip', 'jpg', 'png']
 debug = False
 
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION
+
 
 @app.route('/')
 @app.route('/index')
@@ -33,8 +43,21 @@ def index():
 
 @app.route('/about')
 def about():
-    print('Вызвана ф-ция about')
-    return 'О нас'
+    # print('Вызвана ф-ция about')
+    return render_template('about.html', title='О нас')
+
+
+@app.route('/contacts')
+def contacts():
+    return render_template('contacts.html', title='Свяжитесь с нами')
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return 'Форма отправлена'
+    return render_template('login.html', title='Авторизация', form=form)
 
 
 @app.route('/countdown')
@@ -81,6 +104,7 @@ def sample_page2():
 @app.route('/greeting/<user>/<int:id_num>')
 def greeting(user, id_num):
     return f'Привет, {user} c id={id_num}'
+
 
 # f'
 @app.route('/get-user/')

@@ -5,6 +5,7 @@
 # PUT - принудительно заменяет все на сервере из контекста запроса
 # DELETE - удаляет указанные данные
 # PATCH - частичное изменение данных
+# JINJA - переменные, условия, циклы и т.д.
 import os.path
 import sqlite3
 from werkzeug.utils import secure_filename
@@ -21,8 +22,11 @@ def allowed_file(filename):
 @app.route('/')
 @app.route('/index')
 def index():
-    username = 'слушатель'
-    return render_template('index.html', title='Приветствие', user=username)
+    params = {}
+    params['user'] = 'слушатель'
+    params['title'] = 'приветствие'
+    params['weather'] = 'Сегодня хорошая погода'
+    return render_template('index.html', **params)
 
 
 # return Возвращает только строковое представление
@@ -137,6 +141,26 @@ def file_upload():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_name))
             return f'Файл {new_name} успешно загружен!'
     return 'Ошибка загрузки!'
+
+
+@app.route('/numbers')
+def odd_even():
+    return render_template('numbers.html', title='Чёт-нечёт', number=2)
+
+
+@app.route('/deals')
+def printlist():
+    deal = ['помыть', 'выгулять', 'снять', 'сходить']
+    return render_template('printlist.html', deals=deal)
+
+
+@app.route('/queue')
+def queue():
+    # loop.index - номер итерации, начиная с 1
+    # loop.index0 - номер итерации, начиная с 0
+    # loop.ferst - True, если первая итерация
+    # loop.last - True, если последняя итерация
+    return render_template('vars.html', title='Стоим в очереди')
 
 
 if __name__ == '__main__':

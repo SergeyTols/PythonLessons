@@ -8,7 +8,7 @@
 import os.path
 import sqlite3
 from werkzeug.utils import secure_filename
-from flask import Flask, url_for, request
+from flask import Flask, url_for, request, render_template
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -21,7 +21,8 @@ def allowed_file(filename):
 @app.route('/')
 @app.route('/index')
 def index():
-    return 'Привет, Flask'  # Callback функция
+    username = 'слушатель'
+    return render_template('index.html', title='Приветствие', user=username)
 
 
 # return Возвращает только строковое представление

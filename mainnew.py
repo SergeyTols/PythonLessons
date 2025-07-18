@@ -7,6 +7,7 @@
 # PATCH - частичное изменение данных
 # JINJA - переменные, условия, циклы и т.д.
 # ORM - Object Relational Mapping
+# DBeaver - универсальная программа для работы с базой данных
 
 # https://github.com/ipapMaster/Python_Web_2025/blob/Lesson17/templates/login.html
 # $ndsp; - добавить строку в html

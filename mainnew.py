@@ -18,10 +18,12 @@
 import os.path
 import sqlite3
 
+
 from openpyxl.styles.builtins import title
 from werkzeug.utils import secure_filename
-from flask import Flask, url_for, request, render_template
+from flask import Flask, url_for, request, render_template, redirect
 from forms.loginform import LoginForm
+from forms.user import Register
 from data import db_session
 from  data.users import User
 from data.news import News
@@ -36,11 +38,6 @@ debug = False
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION
 
-@app.errorhandler(404)
-def not_found(e):
-    return render_template('404.html', title='Не найдено')
-
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -51,7 +48,43 @@ def index():
     return render_template('index.html', **params)
 
 
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    form = Register()
+    if form.validate_on_submit():
+        # Если пароли не совпали
+        if form.password.data != form.password_again.data:
+            return render_template('register.html', title='Регистрация', message='Пароли не совпадают', form=form)
+        db_ses = db_session.create_session()
+        # Если пользователь с таким Е-mail уже есть в базе
+        if db_ses.query(User).filter(User.email == form.email.data).first():
+            return  render_template('register.html', title='Регистрация', message='Такой пользователь уже есть', form=form)
+        user = User(
+            name=form.name.data,
+            email=form.email.data,
+            about=form.about.data
+        )
+        user.set_password(form.password.data)
+        db_ses.add(user)
+        db_ses.commit()
+        return redirect('/login')
+    return render_template('register.html', title='Регистрация', form=form)
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html', title='Не найдено')
+
+
+
 # return Возвращает только строковое представление
+
+@app.route('/news')
+def news():
+    db_ses = db_session.create_session()
+    all_news = db_ses.query(News).filter(News.is_private != True).all()
+    # print(all_news)
+    return render_template('news.html', title='Новости', news=all_news)
+
 
 @app.route('/about')
 def about():
@@ -204,21 +237,21 @@ def queue():
 
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
-    # app.run(host='localhost', port=5000, debug=debug)
+    app.run(host='localhost', port=5000, debug=debug)
     # ----------='127.0.0.1'
-    user = User()
-    db_sess = db_session.create_session()
+    # user = User()
+    # db_sess = db_session.create_session()
     # first = db_sess.query(User).filter((User.id != 1) | (User.email.not_like('%a%'))).all()
-    user = db_sess.query(User).filter(User.id == 1).first()
+    # user = db_sess.query(User).filter(User.id == 1).first()
     # user.name = 'Billy'
     # user.set_username('Bouns')
-    news = News(title='First News', content='News Content', user_id=user.id, is_private=False)
-    db_sess.add(news)
+    # news = News(title='First News', content='News Content', user_id=user.id, is_private=False)
+    # db_sess.add(news)
     # db_sess.delete(user)
-    print(user)
+    # print(user)
 
 
-    db_sess.commit()
+    # db_sess.commit()
 
     # user.name = 'Анатолик'
     # user.name = 'WWWW'

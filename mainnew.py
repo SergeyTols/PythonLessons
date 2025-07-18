@@ -210,9 +210,9 @@ if __name__ == '__main__':
     # first = db_sess.query(User).filter((User.id != 1) | (User.email.not_like('%a%'))).all()
     user = db_sess.query(User).filter(User.id == 3).first()
     # user.name = 'Billy'
-    user.set_username('Bouns')
+    # user.set_username('Bouns')
 
-
+    db_sess.delete(user)
     print(user)
 
 

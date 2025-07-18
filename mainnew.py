@@ -9,6 +9,7 @@
 # ORM - Object Relational Mapping
 
 # https://github.com/ipapMaster/Python_Web_2025/blob/Lesson17/templates/login.html
+# $ndsp; - добавить строку в html
 
 # pip install flask-wtf
 # pip freeze > requirements.txt
@@ -31,6 +32,10 @@ debug = False
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html', title='Не найдено')
 
 
 @app.route('/')

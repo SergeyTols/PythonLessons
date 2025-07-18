@@ -19,7 +19,7 @@ class User(SqlAlchemyBase):
                               nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String,
                                         nullable=True)
-    create_data = sqlalchemy.Column(sqlalchemy.DateTime,
+    create_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                     default=datetime.datetime.now())
 
     news = orm.relationship("News", back_populates='user')

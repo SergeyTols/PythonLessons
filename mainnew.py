@@ -23,6 +23,7 @@ from werkzeug.utils import secure_filename
 from flask import Flask, url_for, request, render_template
 from forms.loginform import LoginForm
 from data import db_session
+from  data.users import User
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -202,5 +203,13 @@ def queue():
 
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
-    app.run(host='localhost', port=5000, debug=debug)
+    # app.run(host='localhost', port=5000, debug=debug)
     # ----------='127.0.0.1'
+    user = User()
+    user.name = 'Анатолик'
+    # user.name = 'WWWW'
+    user.about = 'Данные по User2'
+    user.email = 'a1@b.ru'
+    db_sess = db_session.create_session()
+    db_sess.add(user)
+    db_sess.commit()

@@ -24,6 +24,7 @@ from flask import Flask, url_for, request, render_template
 from forms.loginform import LoginForm
 from data import db_session
 from  data.users import User
+from data.news import News
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -208,11 +209,12 @@ if __name__ == '__main__':
     # user = User()
     db_sess = db_session.create_session()
     # first = db_sess.query(User).filter((User.id != 1) | (User.email.not_like('%a%'))).all()
-    user = db_sess.query(User).filter(User.id == 3).first()
+    user = db_sess.query(User).filter(User.id == 1).first()
     # user.name = 'Billy'
     # user.set_username('Bouns')
-
-    db_sess.delete(user)
+    news = News(title='First News', content='News Content', user_id=user.id, is_private=False)
+    db_sess.add(news)
+    # db_sess.delete(user)
     print(user)
 
 

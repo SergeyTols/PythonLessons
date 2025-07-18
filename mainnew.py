@@ -205,11 +205,23 @@ if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
     # app.run(host='localhost', port=5000, debug=debug)
     # ----------='127.0.0.1'
-    user = User()
-    user.name = 'Анатолик'
-    # user.name = 'WWWW'
-    user.about = 'Данные по User2'
-    user.email = 'a1@b.ru'
+    # user = User()
     db_sess = db_session.create_session()
-    db_sess.add(user)
+    # first = db_sess.query(User).filter((User.id != 1) | (User.email.not_like('%a%'))).all()
+    user = db_sess.query(User).filter(User.id == 3).first()
+    # user.name = 'Billy'
+    user.set_username('Bouns')
+
+
+    print(user)
+
+
     db_sess.commit()
+
+    # user.name = 'Анатолик'
+    # # user.name = 'WWWW'
+    # user.about = 'Данные по User2'
+    # user.email = 'a1@b.ru'
+    # db_sess = db_session.create_session()
+    # db_sess.add(user)
+    # db_sess.commit()

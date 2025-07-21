@@ -1,3 +1,5 @@
+# Web приложение на flask с использованием Python, тема магазин(?)
+
 # Введение во Flask
 # MVC - Model View Controller
 # GET - запрашивает данные (read)
@@ -27,8 +29,13 @@ from forms.user import Register
 from data import db_session
 from  data.users import User
 from data.news import News
+from flask_login import LoginManager, login_user, logout_user
 
 app = Flask(__name__)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 app.config['SECRET_KEY'] = 'just_secret_key'
 ALLOWED_EXTENSION = ['txt', 'pdf', 'zip', 'jpg', 'png']
@@ -37,6 +44,13 @@ debug = False
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    db_ses = db_session.create_session()
+    return db_ses.query(User).get(user_id)
+
 
 @app.route('/')
 @app.route('/index')
@@ -101,8 +115,19 @@ def contacts():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        return 'Форма отправлена'
+        db_ses = db_session.create_session()
+        user = db_ses.query(User).filter(User.email == form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            return redirect('/')
+        return render_template('login.html', message='Неверный логин или пароль', title='Ошибка авторизации', form=form)
     return render_template('login.html', title='Авторизация', form=form)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')
 
 
 @app.route('/countdown')

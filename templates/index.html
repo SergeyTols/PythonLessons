@@ -2,6 +2,10 @@
 
 
 {% block content %}
+{% if current_user.is_authenticated %}
 <h1>Привет, {{user}}!</h1>
 <p>{{weather}}</p>
+{% else %}
+<h3>Сначала авторизуйтесь</h3>
+{% endif %}
 {% endblock %}

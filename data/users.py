@@ -22,6 +22,7 @@ class User(SqlAlchemyBase, UserMixin):
                               nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String,
                                         nullable=True)
+    level = sqlalchemy.Column(sqlalchemy.Integer, default=1)
     create_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                     default=datetime.datetime.now())
 

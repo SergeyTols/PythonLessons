@@ -28,7 +28,7 @@ from forms.loginform import LoginForm
 from forms.user import Register
 from forms.news import NewsForm
 from data import db_session
-from  data.users import User
+from data.users import User
 from data.news import News
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 
@@ -133,7 +133,7 @@ def add_news():
 
 @app.route('/newsjob/<int:id_num>', methods=['GET', 'POST'])
 @login_required
-def adit_news(id_num):
+def edit_news(id_num):
     form = NewsForm()
     if request.method == 'GET':
         db_ses = db_session.create_session()

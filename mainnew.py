@@ -1,5 +1,11 @@
 # Web приложение на flask с использованием Python, тема магазин(?)
 
+
+# SOA - Service Oriented Arhitecture
+# MSA - Micro Service Arhitecture
+# REST - REpresentation State Transfer
+
+
 # Введение во Flask
 # MVC - Model View Controller
 # GET - запрашивает данные (read)
@@ -19,18 +25,18 @@
 
 import os.path
 import sqlite3
-from sqlite3 import Error
 
+import requests
 from flask import Flask, url_for, request, render_template, redirect, abort
+from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from werkzeug.utils import secure_filename
 
-from data import db_session
+from data import db_session, news_api
 from data.news import News
 from data.users import User
 from forms.loginform import LoginForm
 from forms.news import NewsForm
 from forms.user import Register
-from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 
 app = Flask(__name__)
 
@@ -49,8 +55,8 @@ def allowed_file(filename):
 
 @login_manager.user_loader
 def load_user(user_id):
-    db_sess = db_session.create_session()
-    return db_sess.query(User).get(user_id)
+    db_ses = db_session.create_session()
+    return db_ses.query(User).get(user_id)
 
 
 @app.route('/')
@@ -180,6 +186,17 @@ def news_delete(news_id):
     return redirect('/news')
 
 
+@app.route('/adminpage', methods=['GET', 'POST'])
+@login_required
+def adminpanel():
+    if current_user.is_authenticated and current_user.is_admin():
+        db_sess = db_session.create_session()
+        res = db_sess.query(News).all()
+        return render_template('admin.html',
+                               title='Панель администратора',
+                               news=res)
+    else:
+        abort(404)
 # @app.route('/newsjob/<int:id_num>', methods=['GET', 'POST'])
 # @login_required
 # def edit_news(id_num):
@@ -389,8 +406,14 @@ def queue():
     return render_template('vars.html', title='Стоим в очереди')
 
 
+@app.route('/testapi')
+def testapi():
+    return requests.get('http://localhost:5000/api/news').json()
+
+
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
+    app.register_blueprint(news_api.blueprint)
     app.run(host='localhost', port=5000, debug=debug)
     # ----------='127.0.0.1'
     # user = User()

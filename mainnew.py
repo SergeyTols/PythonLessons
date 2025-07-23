@@ -31,7 +31,8 @@ from flask import Flask, url_for, request, render_template, redirect, abort
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from werkzeug.utils import secure_filename
 
-from data import db_session, news_api
+from data import db_session, news_api, api_resources
+from flask_restful import Api
 from data.news import News
 from data.users import User
 from forms.loginform import LoginForm
@@ -39,6 +40,7 @@ from forms.news import NewsForm
 from forms.user import Register
 
 app = Flask(__name__)
+api = Api(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -414,6 +416,10 @@ def testapi():
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
     app.register_blueprint(news_api.blueprint)
+    # Доступ к отдельной новости
+    api.add_resource(api_resources.NewsResource, '/api/v2/news/<int:news_id>')
+    # Доступ ко всем новостям
+    api.add_resource(api_resources.NewsResourceList, '/api/v2/news')
     app.run(host='localhost', port=5000, debug=debug)
     # ----------='127.0.0.1'
     # user = User()
@@ -436,3 +442,5 @@ if __name__ == '__main__':
     # db_sess = db_session.create_session()
     # db_sess.add(user)
     # db_sess.commit()
+
+    # pip install flask - restful

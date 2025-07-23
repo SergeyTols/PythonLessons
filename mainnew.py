@@ -176,9 +176,20 @@ def edit_news(id_num):
 @login_required
 def news_delete(news_id):
     db_sess = db_session.create_session()
-    news = db_sess.query(News).filter(
+    if current_user.is_admin:
+        news = db_sess.query(News).filter(
+        News.id == news_id
+         ).first()
+        if news:
+            db_sess.delete(news)
+            db_sess.commit()
+        else:
+            abort(404)
+        return redirect('/adminpage')
+    else:
+        news = db_sess.query(News).filter(
         News.id == news_id, News.user == current_user
-    ).first()
+        ).first()
 
     if news:
         db_sess.delete(news)
@@ -199,6 +210,8 @@ def adminpanel():
                                news=res)
     else:
         abort(404)
+
+
 # @app.route('/newsjob/<int:id_num>', methods=['GET', 'POST'])
 # @login_required
 # def edit_news(id_num):
@@ -228,8 +241,8 @@ def adminpanel():
 #         else:
 #             abort(404)
 #     return render_template('newsjob.html', title='Редактирование новости', form=form)
-#
-#
+
+
 # @app.route('/newsdel/<int:news_id>')
 # @login_required
 # def news_delete(news_id):
@@ -324,44 +337,43 @@ def greeting(user, id_num):
     return f'Привет, {user} c id={id_num}'
 
 
-# f'
-@app.route('/get-user/')
-@app.route('/get-user/<int:id_num>')
-def get_user(id_num=None):
-    if id_num is None:
-        return 'Где номер записи?'
-    con = sqlite3.connect('db/movies.sqlite')
-    cur = con.cursor()
-    query = f'SELECT name, city FROM users WHERE trip_id={id_num}'
-    response = cur.execute(query)
-    result = response.fetchone()
-    name, city = result
-    cur.close()
-    con.close()
-    return f'''<table border="2">
-    <tr>
-    <td>ФИО</td>
-    <td>Город</td>
-    </tr>
-    <tr>
-    <td>{name}</td>
-    <td>{city}</td>
-    </tr>   
-    </table>'''
+# @app.route('/get-user/')
+# @app.route('/get-user/<int:id_num>')
+# def get_user(id_num=None):
+#     if id_num is None:
+#         return 'Где номер записи?'
+#     con = sqlite3.connect('db/movies.sqlite')
+#     cur = con.cursor()
+#     query = f'SELECT name, city FROM users WHERE trip_id={id_num}'
+#     response = cur.execute(query)
+#     result = response.fetchone()
+#     name, city = result
+#     cur.close()
+#     con.close()
+#     return f'''<table border="2">
+#     <tr>
+#     <td>ФИО</td>
+#     <td>Город</td>
+#     </tr>
+#     <tr>
+#     <td>{name}</td>
+#     <td>{city}</td>
+#     </tr>
+#     </table>'''
 
 
-@app.route('/form-test', methods=['POST', 'GET'])
-def form_test():
-    if request.method == 'GET':
-        with open('form.html', 'r', encoding='utf-8') as html:
-            return html.read()
-    elif request.method == 'POST':
-        print(request.form['gender'])
-        print(request.form['email'])
-        print(request.form['about'])
-        print(request.form['level'])
-        print(request.form)
-        return 'Форма успешно отправлена'
+# @app.route('/form-test', methods=['POST', 'GET'])
+# def form_test():
+#     if request.method == 'GET':
+#         with open('form.html', 'r', encoding='utf-8') as html:
+#             return html.read()
+#     elif request.method == 'POST':
+#         print(request.form['gender'])
+#         print(request.form['email'])
+#         print(request.form['about'])
+#         print(request.form['level'])
+#         print(request.form)
+#         return 'Форма успешно отправлена'
 
 
 @app.route('/upload', methods=['POST', 'GET'])

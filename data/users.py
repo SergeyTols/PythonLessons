@@ -29,22 +29,17 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
 
     news = orm.relationship("News", back_populates='user')
 
-
     def set_username(self, newname):
         self.name = newname
-
 
     def __repr__(self):
         return f'<User {self.name}>'
 
-
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)
 
-
     def check_password(self, password):
         return check_password_hash(self.hashed_password, password)
-
 
     def is_admin(self):
         return self.level > 1

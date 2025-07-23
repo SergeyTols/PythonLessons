@@ -56,7 +56,7 @@ def allowed_file(filename):
 @login_manager.user_loader
 def load_user(user_id):
     db_ses = db_session.create_session()
-    return db_ses.query(User).get(user_id)
+    return db_ses.get(User, user_id)
 
 
 @app.route('/')

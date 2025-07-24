@@ -1,5 +1,6 @@
 # Web приложение на flask с использованием Python, тема магазин(?)
 
+#FSGXJDGCX,L
 
 # SOA - Service Oriented Arhitecture
 # MSA - Micro Service Arhitecture
